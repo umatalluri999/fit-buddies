@@ -1,660 +1,1659 @@
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Diet Buddy | 30-Day Challenge</title>
-<style>
-:root {
-  font-family: system-ui, -apple-system, Segoe UI, sans-serif;
-  color: #19352a;
-  background: #f3f8f5;
-}
-* { box-sizing: border-box; }
-body { margin: 0; }
-header { background: #087548; color: white; padding: 22px 5vw; }
-header h1 { margin: 0; font-size: 26px; }
-header p { margin: 5px 0 0; opacity: .9; }
-main { max-width: 1080px; margin: 20px auto; padding: 0 16px; }
-.card {
-  background: white; border: 1px solid #dce9e0;
-  border-radius: 15px; padding: 19px; margin-bottom: 16px;
-}
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
-  gap: 16px;
-}
-.row {
-  display: flex; align-items: center;
-  justify-content: space-between; gap: 12px; flex-wrap: wrap;
-}
-h2 { font-size: 19px; margin: 0 0 12px; }
-h3 { font-size: 15px; margin: 15px 0 8px; }
-.muted { color: #607369; font-size: 13px; }
-label { display: block; font-size: 13px; font-weight: 650; margin: 11px 0 5px; }
-input, textarea, select {
-  width: 100%; padding: 10px; border: 1px solid #cbd9d0;
-  border-radius: 8px; font: inherit;
-}
-button {
-  background: #087548; border: 0; border-radius: 8px;
-  color: white; padding: 10px 15px; font: inherit; cursor: pointer;
-}
-button.secondary { background: #e5f2e9; color: #12663f; }
-button:disabled { opacity: .5; cursor: default; }
-.hide { display: none !important; }
-.status {
-  padding: 11px; border-radius: 9px; background: #e9f4ee;
-  margin-bottom: 14px; white-space: pre-wrap;
-}
-.error { background: #ffe9e7; color: #842d23; }
-.stat { font-size: 27px; font-weight: 750; color: #087548; }
-.check { display: flex; gap: 9px; align-items: center; margin: 9px 0; }
-.check input { width: 18px; height: 18px; flex-shrink: 0; }
-.juice {
-  background: #f7faf8; border: 1px solid #e1ebe5;
-  padding: 11px; border-radius: 9px; margin: 8px 0;
-}
-.juice .row input { flex: 1; min-width: 130px; }
-.juice input[type=time] { max-width: 130px; }
-.bar {
-  height: 11px; background: #dce9e0;
-  border-radius: 9px; overflow: hidden; margin: 8px 0;
-}
-.bar > div { height: 100%; background: #087548; }
-.calendar {
-  display: grid; grid-template-columns: repeat(7,minmax(0,1fr)); gap: 6px;
-}
-.day {
-  padding: 9px 3px; border: 1px solid #dce9e0;
-  border-radius: 8px; background: #f7faf8; color: #19352a;
-  text-align: center; font-size: 12px; min-height: 58px;
-}
-.day.selected { outline: 2px solid #087548; }
-.day.done { background: #d5f0df; }
-.day strong { display: block; font-size: 16px; }
-.entry { border-bottom: 1px solid #e4ece6; padding: 11px 0; }
-.entry:last-child { border: 0; }
-.entries { max-height: 400px; overflow: auto; }
-.pill {
-  display: inline-block; border-radius: 30px;
-  background: #e5f2e9; color: #12663f;
-  padding: 4px 9px; font-size: 12px;
-}
-.chart {
-  width: 100%; height: 180px;
-  border: 1px solid #e5eee8; border-radius: 8px;
-}
-.small-grid {
-  display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 10px;
-}
-.save { width: 100%; margin-top: 18px; padding: 13px; }
-footer { text-align: center; color: #63766a; padding: 20px; }
-small { font-size: 12px; }
-@media(max-width:480px) {
-  .day { font-size: 10px; padding: 7px 2px; min-height: 50px; }
-  .day strong { font-size: 13px; }
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#123d2e">
+
+  <title>Fitarya | Your Health. Your Progress.</title>
+  <meta name="description"
+    content="Fitarya is your personal wellness space for diet plans, fitness, daily habits and progress tracking.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --green: #1c684b;
+      --dark: #15382b;
+      --light: #f5f8f2;
+      --lime: #d9f1b5;
+      --muted: #68776e;
+      --border: #dfe8dd;
+      --white: #ffffff;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--light);
+      color: var(--dark);
+      font-family: "DM Sans", sans-serif;
+    }
+
+    h1, h2, h3 {
+      font-family: "Outfit", sans-serif;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button, input, textarea, select {
+      font: inherit;
+    }
+
+    button { cursor: pointer; }
+
+    .container {
+      width: min(1150px, calc(100% - 36px));
+      margin: auto;
+    }
+
+    .hidden { display: none !important; }
+
+    .btn {
+      border: none;
+      padding: 14px 24px;
+      border-radius: 30px;
+      font-weight: 700;
+      display: inline-block;
+      text-align: center;
+      transition: 0.2s;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .primary {
+      background: var(--green);
+      color: white;
+    }
+
+    .outline {
+      background: transparent;
+      border: 1px solid #bacbbd;
+      color: var(--dark);
+    }
+
+    .white-btn {
+      background: white;
+      color: var(--dark);
+    }
+
+    /* NAVIGATION */
+
+    header {
+      padding: 20px 0;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .logo {
+      font-family: "Outfit", sans-serif;
+      font-size: 30px;
+      font-weight: 800;
+      letter-spacing: -1.5px;
+    }
+
+    .logo span {
+      color: #84b758;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 620px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: center;
+      gap: 50px;
+      padding: 55px 0 90px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      background: #e5f2db;
+      color: var(--green);
+      border-radius: 30px;
+      padding: 10px 16px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      font-size: clamp(45px, 6vw, 80px);
+      line-height: 1.05;
+      letter-spacing: -3px;
+      margin: 25px 0;
+    }
+
+    .hero h1 em {
+      color: var(--green);
+      font-style: normal;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.8;
+      max-width: 530px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    .hero-art {
+      min-height: 450px;
+      border-radius: 35px;
+      background:
+        radial-gradient(circle at 25% 20%, #d7f4a6, transparent 50%),
+        linear-gradient(135deg, #b8d9a6, #7fb69c);
+      display: grid;
+      place-items: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 20px 50px #244e2b25;
+    }
+
+    .hero-circle {
+      width: 290px;
+      height: 290px;
+      background: #ffffff55;
+      border: 1px solid #ffffff88;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 115px;
+      box-shadow:
+        0 0 0 30px #ffffff22,
+        0 0 0 65px #ffffff15;
+    }
+
+    .floating {
+      position: absolute;
+      background: #ffffffef;
+      border-radius: 17px;
+      padding: 15px 18px;
+      font-size: 13px;
+      font-weight: 700;
+      box-shadow: 0 12px 35px #234b2d30;
+    }
+
+    .floating small {
+      display: block;
+      color: var(--muted);
+      margin-top: 5px;
+      font-weight: 400;
+    }
+
+    .float1 {
+      top: 45px;
+      left: 18px;
+    }
+
+    .float2 {
+      right: 15px;
+      bottom: 45px;
+    }
+
+    /* SECTIONS */
+
+    section.content {
+      padding: 70px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      max-width: 650px;
+      margin: 0 auto 40px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(32px, 4vw, 48px);
+      letter-spacing: -1.5px;
+      margin: 15px 0;
+    }
+
+    .section-title p {
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 28px;
+    }
+
+    .card-icon {
+      width: 60px;
+      height: 60px;
+      display: grid;
+      place-items: center;
+      background: #edf5e5;
+      border-radius: 18px;
+      font-size: 28px;
+    }
+
+    .card h3 {
+      font-size: 22px;
+      margin: 20px 0 10px;
+    }
+
+    .card p {
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 14px;
+    }
+
+    /* TEAM */
+
+    .team-section {
+      background: var(--dark);
+      border-radius: 35px;
+      color: white;
+      padding: 50px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 35px;
+      align-items: center;
+    }
+
+    .team-section h2 {
+      font-size: 42px;
+      margin: 15px 0;
+    }
+
+    .team-section p {
+      color: #d2e6d9;
+      line-height: 1.8;
+    }
+
+    .team-members {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+
+    .member {
+      background: #ffffff15;
+      border: 1px solid #ffffff30;
+      padding: 25px;
+      border-radius: 22px;
+      text-align: center;
+    }
+
+    .avatar {
+      width: 70px;
+      height: 70px;
+      background: var(--lime);
+      color: var(--dark);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 28px;
+      font-weight: 800;
+      margin: 0 auto 15px;
+    }
+
+    .member strong { display: block; }
+
+    .member small {
+      display: block;
+      margin-top: 7px;
+      color: #cce2d2;
+    }
+
+    /* CTA */
+
+    .cta {
+      text-align: center;
+      padding: 75px 20px;
+      background: #e8f3dd;
+      border-radius: 35px;
+      margin: 70px 0;
+    }
+
+    .cta h2 {
+      font-size: 43px;
+      margin: 0 0 15px;
+    }
+
+    .cta p {
+      color: var(--muted);
+      margin-bottom: 25px;
+    }
+
+    footer {
+      padding: 35px 0;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 13px;
+      text-align: center;
+    }
+
+    /* LOGIN MODAL */
+
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: #0b251bca;
+      display: grid;
+      place-items: center;
+      z-index: 100;
+      padding: 18px;
+    }
+
+    .modal {
+      width: min(440px, 100%);
+      background: white;
+      padding: 35px;
+      border-radius: 26px;
+      position: relative;
+    }
+
+    .modal h2 {
+      font-size: 32px;
+      margin: 10px 0;
+    }
+
+    .modal p {
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .close {
+      position: absolute;
+      top: 18px;
+      right: 20px;
+      background: #eef3eb;
+      border: none;
+      border-radius: 50%;
+      width: 35px;
+      height: 35px;
+      font-size: 22px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .field input,
+    .field textarea,
+    .field select {
+      width: 100%;
+      border: 1px solid #cbd9ca;
+      border-radius: 12px;
+      background: #fcfdfa;
+      padding: 13px;
+      color: var(--dark);
+    }
+
+    .field textarea {
+      min-height: 95px;
+      resize: vertical;
+    }
+
+    .error {
+      color: #b34432;
+      font-size: 13px;
+      margin-top: 12px;
+    }
+
+    /* DASHBOARD */
+
+    .dashboard {
+      padding: 30px 0 80px;
+    }
+
+    .dashboard h1 {
+      font-size: 42px;
+      margin-bottom: 5px;
+    }
+
+    .dashboard-subtitle {
+      color: var(--muted);
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin: 25px 0;
+    }
+
+    .stat {
+      background: #e7f2df;
+      border-radius: 20px;
+      padding: 22px;
+    }
+
+    .stat strong {
+      font: 700 32px "Outfit", sans-serif;
+      display: block;
+    }
+
+    .stat span {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      gap: 20px;
+    }
+
+    .panel {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 28px;
+      margin-bottom: 20px;
+    }
+
+    .panel h2 {
+      margin: 0 0 23px;
+      font-size: 24px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+
+    .full {
+      grid-column: 1 / -1;
+    }
+
+    .checkboxes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .checkboxes label {
+      background: #f1f7ed;
+      padding: 12px;
+      border-radius: 12px;
+      font-size: 13px;
+    }
+
+    .checkboxes input {
+      accent-color: var(--green);
+    }
+
+    .history-item {
+      border: 1px solid var(--border);
+      padding: 14px;
+      border-radius: 14px;
+      margin-bottom: 10px;
+      font-size: 13px;
+    }
+
+    .history-item strong {
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .history-item span {
+      color: var(--muted);
+    }
+
+    .challenge-box {
+      background: #e9f4df;
+      padding: 20px;
+      border-radius: 18px;
+      margin-bottom: 25px;
+    }
+
+    .progress-track {
+      height: 10px;
+      border-radius: 10px;
+      background: #c9dcbf;
+      overflow: hidden;
+      margin-top: 15px;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: var(--green);
+    }
+
+    .status {
+      color: var(--green);
+      font-size: 13px;
+      margin-top: 15px;
+      min-height: 20px;
+    }
+
+    @media (max-width: 850px) {
+      .hero,
+      .team-section,
+      .dashboard-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .features {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .hero-art { min-height: 350px; }
+
+      .nav-links a { display: none; }
+    }
+
+    @media (max-width: 570px) {
+      .features,
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        letter-spacing: -2px;
+      }
+
+      .hero-circle {
+        width: 210px;
+        height: 210px;
+        font-size: 85px;
+      }
+
+      .team-section {
+        padding: 30px 20px;
+      }
+
+      .team-members {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .stats {
+        gap: 8px;
+      }
+
+      .stat {
+        padding: 13px;
+      }
+
+      .stat strong {
+        font-size: 23px;
+      }
+
+      .panel {
+        padding: 20px;
+      }
+
+      .full {
+        grid-column: auto;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<header>
-  <h1>🌿 Diet Buddy</h1>
-  <p>Mahesh & Srini · 30-Day Health Challenge · Nov 2 – Dec 1, 2026</p>
-</header>
+  <!-- NAVIGATION -->
 
-<main>
-<div id="message" class="status">Loading Firebase…</div>
+  <header>
+    <div class="container nav">
 
-<section id="auth" class="card hide">
-  <h2>Sign in</h2>
-  <label>Email</label>
-  <input id="email" type="email" autocomplete="email">
-  <label>Password</label>
-  <input id="password" type="password" autocomplete="current-password">
-  <button id="signin" style="margin-top:12px">Sign in</button>
-</section>
+      <a href="#home" class="logo">
+        ✦ fitarya<span>.</span>
+      </a>
 
-<section id="app" class="hide">
-  <div class="card row">
-    <div>
-      <strong id="who"></strong>
-      <div class="muted">Private Firestore data · Shared between two members</div>
+      <nav class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#team">Our Team</a>
+        <a href="#about">Our Mission</a>
+
+        <button id="loginButton" class="btn primary">
+          Member Login
+        </button>
+
+        <button id="logoutButton"
+          class="btn outline hidden">
+          Log Out
+        </button>
+      </nav>
+
     </div>
-    <button id="signout" class="secondary">Sign out</button>
-  </div>
+  </header>
 
-  <div class="card">
-    <div class="row">
+  <!-- PUBLIC HOMEPAGE -->
+
+  <main id="landing">
+
+    <section class="container hero" id="home">
+
       <div>
-        <h2>🏁 30-Day Challenge</h2>
-        <div class="muted">
-          Days 1–3: Juice tracking · Days 4–30: Meals, water & activity
-        </div>
-      </div>
-      <span id="phase" class="pill">Day 1</span>
-    </div>
-    <div id="overallText" class="muted"></div>
-    <div class="bar"><div id="overallBar" style="width:0%"></div></div>
-    <div id="calendar" class="calendar"></div>
-    <p class="muted">Tap a day to view or edit your check-in. Green means saved.</p>
-  </div>
+        <span class="eyebrow">
+          A better you, every day
+        </span>
 
-  <div class="grid">
-    <section class="card">
-      <h2>📝 Daily check-in</h2>
-      <label>Person</label>
-      <input id="person" disabled>
-      <label>Date</label>
-      <input id="day" type="date" min="2026-11-02" max="2026-12-01">
-      <div id="dayPhase" class="pill" style="margin-top:12px"></div>
+        <h1>
+          Wellness is a
+          <em>journey.</em>
+          <br>
+          Make it yours.
+        </h1>
 
-      <div class="small-grid">
-        <div>
-          <label>Weight (kg)</label>
-          <input id="weight" type="number" min="20" max="400" step="0.1">
-        </div>
-        <div>
-          <label>Target (kg)</label>
-          <input id="target" type="number" min="20" max="400" step="0.1">
-        </div>
-      </div>
-
-      <div class="small-grid">
-        <div>
-          <label>Water (liters)</label>
-          <input id="water" type="number" min="0" max="15" step="0.1">
-        </div>
-        <div>
-          <label>Exercise (minutes)</label>
-          <input id="exercise" type="number" min="0" max="600" step="1">
-        </div>
-      </div>
-
-      <h3>Daily habits</h3>
-      <div id="habits"></div>
-
-      <label>Energy / how you feel</label>
-      <select id="feeling">
-        <option value="">Select</option>
-        <option>Energetic</option>
-        <option>Normal</option>
-        <option>Hungry</option>
-        <option>Tired</option>
-        <option>Dizzy</option>
-        <option>Other</option>
-      </select>
-
-      <label>Notes</label>
-      <textarea id="notes" rows="3" maxlength="1000"></textarea>
-    </section>
-
-    <section class="card">
-      <div id="juiceSection">
-        <h2>🥤 Days 1–3: Juice tracker</h2>
-        <p class="muted">
-          Enter the names from your Pressed Juicery package.
-          Check each juice only after consuming it.
+        <p>
+          A personal space to track your health,
+          build better eating habits, stay active
+          and celebrate your daily progress.
+          Every small step matters.
         </p>
-        <label>Cleanse package</label>
-        <input id="package" value="Pressed Juicery 3-Day Cleanse"
-               maxlength="120">
-        <div id="juices"></div>
-        <strong id="juiceCount">0/6 consumed</strong>
-        <div class="bar"><div id="juiceBar" style="width:0%"></div></div>
+
+        <div class="hero-buttons">
+          <button class="btn primary login-trigger">
+            Start Your Journey →
+          </button>
+
+          <a href="#features" class="btn outline">
+            Explore Fitarya
+          </a>
+        </div>
+
+        <p style="font-size:13px;margin-top:25px">
+          🌱 Started with friends. Built for better days.
+        </p>
       </div>
 
-      <div id="mealSection" class="hide">
-        <h2>🥗 Days 4–30: Food diary</h2>
-        <p class="muted">Record balanced meals and portions.</p>
-        <label>Breakfast</label>
-        <textarea id="breakfast" rows="2" maxlength="500"></textarea>
-        <label>Lunch</label>
-        <textarea id="lunch" rows="2" maxlength="500"></textarea>
-        <label>Dinner</label>
-        <textarea id="dinner" rows="2" maxlength="500"></textarea>
-        <label>Snacks / drinks</label>
-        <textarea id="snacks" rows="2" maxlength="500"></textarea>
+      <div class="hero-art">
+
+        <div class="hero-circle">
+          🥑
+        </div>
+
+        <div class="floating float1">
+          🌿 Healthy habits
+          <small>One day at a time</small>
+        </div>
+
+        <div class="floating float2">
+          💚 Daily progress
+          <small>Food · Water · Movement</small>
+        </div>
+
       </div>
 
-      <label>Other drinks or food</label>
-      <textarea id="other" rows="2" maxlength="500"></textarea>
-      <button id="save" class="save">Save this day's check-in</button>
     </section>
-  </div>
 
-  <div class="grid">
-    <section class="card">
-      <h2>📈 My progress</h2>
-      <div class="muted">Latest weight</div>
-      <div id="latest" class="stat">—</div>
-      <p id="goal" class="muted"></p>
-      <div id="myStats" class="muted"></div>
-      <h3>Weight trend</h3>
-      <svg id="chart" class="chart" viewBox="0 0 500 180"
-           role="img" aria-label="Your weight trend"></svg>
+    <!-- FEATURES -->
+
+    <section class="content container" id="features">
+
+      <div class="section-title">
+        <span class="eyebrow">Your wellness companion</span>
+
+        <h2>
+          Everything you need to grow healthier.
+        </h2>
+
+        <p>
+          Fitarya brings your nutrition, movement,
+          health habits and daily progress together
+          in one simple place.
+        </p>
+      </div>
+
+      <div class="features">
+
+        <article class="card">
+          <div class="card-icon">🥗</div>
+          <h3>Diet & Nutrition</h3>
+          <p>
+            Record your breakfast, lunch, dinner,
+            snacks and daily eating habits.
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="card-icon">⚖️</div>
+          <h3>Weight Tracking</h3>
+          <p>
+            Track your weight and target goals
+            as you progress through your journey.
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="card-icon">🏃</div>
+          <h3>Fitness & Movement</h3>
+          <p>
+            Log exercise time, stay active and
+            build a consistent movement routine.
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="card-icon">💧</div>
+          <h3>Hydration</h3>
+          <p>
+            Keep track of daily water consumption
+            and hydration habits.
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="card-icon">📊</div>
+          <h3>Daily Progress</h3>
+          <p>
+            Record your daily check-ins and review
+            your progress over time.
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="card-icon">🤝</div>
+          <h3>Buddy Challenges</h3>
+          <p>
+            Stay accountable with friends,
+            encourage each other and celebrate wins.
+          </p>
+        </article>
+
+      </div>
     </section>
-    <section class="card">
-      <h2>📚 My history</h2>
-      <div id="history" class="entries muted">No entries yet.</div>
+
+    <!-- TEAM -->
+
+    <section class="container content" id="team">
+
+      <div class="team-section">
+
+        <div>
+          <span class="eyebrow">Meet the team</span>
+
+          <h2>
+            Two friends.
+            One healthier journey.
+          </h2>
+
+          <p>
+            Fitarya began with a simple idea:
+            making healthy living easier through
+            friendship, consistency and
+            daily accountability.
+          </p>
+
+          <p>
+            We're building better habits together,
+            one day at a time.
+          </p>
+        </div>
+
+        <div class="team-members">
+
+          <div class="member">
+            <div class="avatar">M</div>
+            <strong>Mahesh</strong>
+            <small>Founding Member</small>
+          </div>
+
+          <div class="member">
+            <div class="avatar">S</div>
+            <strong>Srini</strong>
+            <small>Founding Member</small>
+          </div>
+
+        </div>
+
+      </div>
+
     </section>
-  </div>
 
-  <section class="card">
-    <h2>🤝 Shared progress</h2>
-    <p class="muted">Both can view progress. Only the owner can edit.</p>
-    <div id="shared" class="grid"></div>
-  </section>
-</section>
-</main>
+    <!-- MISSION -->
 
-<footer>
-  Diet Buddy · Sustainable progress matters more than perfection
-</footer>
+    <section class="container content" id="about">
 
-<script type="module">
-import {initializeApp} from
-  'https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js';
-import {
-  getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut
-} from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js';
-import {
-  getFirestore, doc, setDoc, collection, onSnapshot, serverTimestamp
-} from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js';
+      <div class="section-title">
+        <span class="eyebrow">Our philosophy</span>
 
-const firebaseConfig = {
-  apiKey: 'AIzaSyCzoHhKe-uC_LHXkJ4Oopzg3vRT2xk9IzI',
-  authDomain: 'mahesh-srini-diet-buddy.firebaseapp.com',
-  projectId: 'mahesh-srini-diet-buddy',
-  storageBucket: 'mahesh-srini-diet-buddy.firebasestorage.app',
-  messagingSenderId: '661485924930',
-  appId: '1:661485924930:web:9bb0093a92dd8930bfb3db',
-  measurementId: 'G-ZZ35BSFSHX'
-};
+        <h2>
+          Progress over perfection.
+        </h2>
 
-const members = {
-  '8DkIKl4d2jgBSClwE2iaTsq5XHB2': 'Mahesh',
-  'pJp6DYXYJygYSXmcb0sfhMp0u5b2': 'Srini'
-};
+        <p>
+          Being healthy isn't about one perfect
+          meal or one intense workout.
+          It's about making choices you can
+          maintain and improving a little
+          every day.
+        </p>
+      </div>
 
-const fb = initializeApp(firebaseConfig);
-const auth = getAuth(fb);
-const db = getFirestore(fb);
-const $ = id => document.getElementById(id);
+    </section>
 
-const START = '2026-11-02';
-const END = '2026-12-01';
-const DAYS = 30;
-const habits = [
-  'Followed my meal plan',
-  'Drank enough water',
-  'Walked / exercised',
-  'No alcohol',
-  'Logged all food and drinks'
-];
+    <!-- CALL TO ACTION -->
 
-let uid = null;
-let unsubscribe = null;
-let own = [];
-let all = [];
-let dirty = false;
-let activeDate = '';
+    <section class="container">
 
-const iso = d =>
-  `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+      <div class="cta">
 
-const dayAt = i => {
-  const d = new Date(2026,10,2+i);
-  return iso(d);
-};
+        <h2>Ready for a healthier chapter?</h2>
 
-const dayNum = date => {
-  const i = Array.from({length:DAYS},(_,k)=>dayAt(k)).indexOf(date);
-  return i < 0 ? 0 : i+1;
-};
+        <p>
+          Your journey begins with today's
+          first small step.
+        </p>
 
-const safe = s => String(s??'').replace(/[&<>"']/g,c=>({
-  '&':'&amp;', '<':'&lt;', '>':'&gt;',
-  '"':'&quot;', "'":'&#39;'
-}[c]));
+        <button class="btn primary login-trigger">
+          Member Login →
+        </button>
 
-function msg(s,error=false) {
-  $('message').textContent = s;
-  $('message').className = 'status' + (error?' error':'');
-}
+        <p style="font-size:12px;margin-top:20px">
+          Private member access
+        </p>
 
-$('habits').innerHTML = habits.map((h,i)=>`
-  <label class="check">
-    <input type="checkbox" id="h${i}">${h}
-  </label>
-`).join('');
+      </div>
 
-$('juices').innerHTML = Array.from({length:6},(_,i)=>`
-  <div class="juice">
-    <label class="check">
-      <input type="checkbox" id="j${i}">
-      Juice ${i+1} consumed
-    </label>
-    <div class="row">
-      <input id="jn${i}" maxlength="100" placeholder="Juice name">
-      <input id="jt${i}" type="time" aria-label="Juice time">
+    </section>
+
+  </main>
+
+  <!-- PRIVATE DASHBOARD -->
+
+  <main id="dashboard" class="hidden">
+
+    <div class="container dashboard">
+
+      <h1 id="welcome">Welcome back 👋</h1>
+
+      <p class="dashboard-subtitle">
+        Your personal wellness dashboard.
+        Track today. Improve tomorrow.
+      </p>
+
+      <div class="stats">
+
+        <div class="stat">
+          <strong id="myDays">0</strong>
+          <span>Your check-ins</span>
+        </div>
+
+        <div class="stat">
+          <strong id="latestWeight">—</strong>
+          <span>Latest weight (kg)</span>
+        </div>
+
+        <div class="stat">
+          <strong id="totalEntries">0</strong>
+          <span>Team check-ins</span>
+        </div>
+
+      </div>
+
+      <div class="dashboard-grid">
+
+        <!-- DAILY CHECK-IN -->
+
+        <div>
+
+          <div class="panel">
+
+            <h2>🌿 Daily Health Check-in</h2>
+
+            <div class="form-grid">
+
+              <label class="field">
+                Date
+                <input type="date" id="checkinDate">
+              </label>
+
+              <label class="field">
+                Current Weight (kg)
+                <input type="number"
+                  id="weight"
+                  step="0.1"
+                  min="1"
+                  max="500"
+                  placeholder="e.g. 92.5">
+              </label>
+
+              <label class="field">
+                Target Weight (kg)
+                <input type="number"
+                  id="targetWeight"
+                  step="0.1"
+                  min="1"
+                  max="500"
+                  placeholder="Your goal">
+              </label>
+
+              <label class="field">
+                Water (glasses)
+                <input type="number"
+                  id="water"
+                  min="0"
+                  max="50"
+                  placeholder="e.g. 8">
+              </label>
+
+              <label class="field">
+                Breakfast
+                <input id="breakfast"
+                  placeholder="What did you eat?">
+              </label>
+
+              <label class="field">
+                Lunch
+                <input id="lunch"
+                  placeholder="Your lunch">
+              </label>
+
+              <label class="field">
+                Dinner
+                <input id="dinner"
+                  placeholder="Your dinner">
+              </label>
+
+              <label class="field">
+                Snacks / Juices
+                <input id="snacks"
+                  placeholder="Snacks, fruits or juices">
+              </label>
+
+              <label class="field">
+                Exercise (minutes)
+                <input type="number"
+                  id="exercise"
+                  min="0"
+                  max="1440"
+                  placeholder="e.g. 30">
+              </label>
+
+              <label class="field">
+                How do you feel?
+                <select id="feeling">
+                  <option value="">Choose</option>
+                  <option>Great 😊</option>
+                  <option>Good 🙂</option>
+                  <option>Okay 😐</option>
+                  <option>Tired 😴</option>
+                  <option>Stressed 😟</option>
+                </select>
+              </label>
+
+              <div class="full checkboxes">
+
+                <label>
+                  <input type="checkbox" id="noAlcohol">
+                  No alcohol
+                </label>
+
+                <label>
+                  <input type="checkbox" id="mealPlan">
+                  Followed meal plan
+                </label>
+
+                <label>
+                  <input type="checkbox" id="workoutDone">
+                  Exercise completed
+                </label>
+
+              </div>
+
+              <label class="field full">
+                Notes / Health Observations
+                <textarea id="notes"
+                  placeholder="Sleep, mood, energy, health observations or today's achievements..."></textarea>
+              </label>
+
+            </div>
+
+            <button id="saveCheckin"
+              class="btn primary">
+              Save Today's Check-in ✓
+            </button>
+
+            <div id="saveStatus"
+              class="status"
+              role="status"></div>
+
+          </div>
+
+        </div>
+
+        <!-- SIDE PANEL -->
+
+        <aside>
+
+          <div class="panel">
+
+            <h2>🏆 30-Day Challenge</h2>
+
+            <div class="challenge-box">
+
+              <strong>30 Days of Progress</strong>
+
+              <p>
+                November 2 – December 1, 2026
+              </p>
+
+              <div class="progress-track">
+                <div id="challengeProgress"
+                  class="progress-fill"></div>
+              </div>
+
+              <p id="challengeDay">
+                Day 1 of 30
+              </p>
+
+            </div>
+
+            <h2>👥 Buddy Progress</h2>
+
+            <div id="buddyActivity">
+              Loading...
+            </div>
+
+          </div>
+
+          <div class="panel">
+
+            <h2>📅 Your History</h2>
+
+            <div id="history">
+              No check-ins yet.
+            </div>
+
+          </div>
+
+        </aside>
+
+      </div>
+
     </div>
+
+  </main>
+
+  <!-- FOOTER -->
+
+  <footer>
+    © <span id="year"></span> Fitarya.
+    Your Health. Your Progress.
+    <br>
+    Built for better days 🌱
+  </footer>
+
+  <!-- LOGIN MODAL -->
+
+  <div id="loginModal"
+    class="modal-backdrop hidden"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="loginTitle">
+
+    <div class="modal">
+
+      <button class="close"
+        id="closeLogin"
+        aria-label="Close login">
+        ×
+      </button>
+
+      <div class="logo">
+        ✦ fitarya<span>.</span>
+      </div>
+
+      <h2 id="loginTitle">
+        Welcome back 👋
+      </h2>
+
+      <p>
+        Sign in to access your personal
+        Fitarya health dashboard.
+      </p>
+
+      <form id="loginForm">
+
+        <label class="field">
+          Email Address
+          <input type="email"
+            id="email"
+            autocomplete="username"
+            required>
+        </label>
+
+        <label class="field">
+          Password
+          <input type="password"
+            id="password"
+            autocomplete="current-password"
+            required>
+        </label>
+
+        <button type="submit"
+          class="btn primary"
+          id="submitLogin"
+          style="width:100%">
+          Sign In →
+        </button>
+
+        <div id="loginError"
+          class="error"
+          role="alert"></div>
+
+      </form>
+
+      <p style="font-size:12px">
+        Access is currently available
+        to invited members only.
+      </p>
+
+    </div>
+
   </div>
-`).join('');
 
-function progress() {
-  const count = Array.from({length:6},(_,i)=>
-    $('j'+i).checked
-  ).filter(Boolean).length;
-  $('juiceCount').textContent = `${count}/6 consumed`;
-  $('juiceBar').style.width = `${count/6*100}%`;
-}
+  <!-- FIREBASE -->
 
-function selectDate(date) {
-  if (!dayNum(date)) return;
-  if (dirty && !confirm('Discard unsaved changes?')) return;
-  activeDate = date;
-  $('day').value = date;
-  loadDay();
-  render();
-}
+  <script type="module">
 
-function loadDay() {
-  const v = own.find(x=>x.date===activeDate);
-  const recent = [...own].sort((a,b)=>
-    b.date.localeCompare(a.date)
-  )[0];
-  const n = dayNum(activeDate);
+    import {
+      initializeApp
+    } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
 
-  $('phase').textContent = `Day ${n} of 30`;
-  $('dayPhase').textContent = n<=3 ?
-    `🥤 Cleanse day ${n}` : `🥗 Healthy diet day ${n-3} of 27`;
-  $('juiceSection').classList.toggle('hide',n>3);
-  $('mealSection').classList.toggle('hide',n<=3);
+    import {
+      getAuth,
+      onAuthStateChanged,
+      signInWithEmailAndPassword,
+      signOut
+    } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
 
-  $('weight').value = v?.weight??'';
-  $('target').value = v?.target??recent?.target??'';
-  $('water').value = v?.water??'';
-  $('exercise').value = v?.exercise??'';
-  $('notes').value = v?.notes??'';
-  $('feeling').value = v?.feeling??'';
-  $('other').value = v?.otherIntake??'';
-  $('package').value = v?.cleansePackage??
-    'Pressed Juicery 3-Day Cleanse';
+    import {
+      getFirestore,
+      collection,
+      doc,
+      setDoc,
+      onSnapshot,
+      serverTimestamp
+    } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
 
-  for (const field of ['breakfast','lunch','dinner','snacks'])
-    $(field).value = v?.meals?.[field]??'';
+    // Existing Fitarya Firebase project
 
-  habits.forEach((_,i)=>
-    $('h'+i).checked = !!v?.checks?.[i]
-  );
+    const firebaseConfig = {
+      apiKey: "AIzaSyCzoHhKe-uC_LHXkJ4Oopzg3vRT2xk9IzI",
+      authDomain: "mahesh-srini-diet-buddy.firebaseapp.com",
+      projectId: "mahesh-srini-diet-buddy",
+      storageBucket: "mahesh-srini-diet-buddy.firebasestorage.app",
+      messagingSenderId: "661485924930",
+      appId: "1:661485924930:web:9bb0093a92dd8930bfb3db",
+      measurementId: "G-ZZ35BSFSHX"
+    };
 
-  for (let i=0;i<6;i++) {
-    $('j'+i).checked = !!v?.juices?.[i]?.consumed;
-    $('jn'+i).value = v?.juices?.[i]?.name??'';
-    $('jt'+i).value = v?.juices?.[i]?.time??'';
-  }
-  progress();
-  dirty = false;
-}
+    const MEMBERS = {
+      "8DkIKl4d2jgBSClwE2iaTsq5XHB2": "Mahesh",
+      "pJp6DYXYJygYSXmcb0sfhMp0u5b2": "Srini"
+    };
 
-function renderChart(entries) {
-  const points = entries
-    .filter(x=>Number.isFinite(x.weight))
-    .sort((a,b)=>a.date.localeCompare(b.date));
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
 
-  if (!points.length) {
-    $('chart').innerHTML =
-      '<text x="20" y="90" fill="#607369">No weight entries yet</text>';
-    return;
-  }
+    const $ = id => document.getElementById(id);
 
-  const weights = points.map(x=>x.weight);
-  const lo = Math.min(...weights)-1;
-  const hi = Math.max(...weights)+1;
+    let currentUser = null;
+    let checkins = [];
+    let unsubscribe = null;
 
-  const coords = points.map(x=>({
-    x:28+(dayNum(x.date)-1)*440/29,
-    y:145-(x.weight-lo)*110/(hi-lo)
-  }));
+    $("year").textContent = new Date().getFullYear();
 
-  const path = coords.map((p,i)=>
-    (i?'L':'M')+p.x.toFixed(1)+' '+p.y.toFixed(1)
-  ).join(' ');
+    function localToday() {
+      const d = new Date();
 
-  $('chart').innerHTML = `
-    <line x1="28" y1="145" x2="470" y2="145" stroke="#b9cec1"/>
-    <text x="28" y="164" font-size="11">Day 1</text>
-    <text x="428" y="164" font-size="11">Day 30</text>
-    <text x="8" y="20" font-size="11">${hi.toFixed(1)} kg</text>
-    <text x="8" y="140" font-size="11">${lo.toFixed(1)}</text>
-    <path d="${path}" fill="none" stroke="#087548" stroke-width="3"/>
-    ${coords.map(p=>`
-      <circle cx="${p.x}" cy="${p.y}" r="4" fill="#087548"/>
-    `).join('')}
-  `;
-}
+      return [
+        d.getFullYear(),
+        String(d.getMonth() + 1).padStart(2, "0"),
+        String(d.getDate()).padStart(2, "0")
+      ].join("-");
+    }
 
-function render() {
-  const saved = new Set(own.map(x=>x.date));
+    $("checkinDate").value = localToday();
 
-  $('calendar').innerHTML =
-    Array.from({length:DAYS},(_,i)=>{
-      const date=dayAt(i), n=i+1;
-      return `<button class="day
-        ${saved.has(date)?'done':''}
-        ${date===activeDate?'selected':''}"
-        data-date="${date}" type="button">
-        <strong>${n}</strong>
-        ${n<=3?'🥤':'🥗'} ${saved.has(date)?'✓':''}
-      </button>`;
-    }).join('');
+    // LOGIN MODAL
 
-  $('calendar').querySelectorAll('button').forEach(b=>
-    b.onclick=()=>selectDate(b.dataset.date)
-  );
+    function showLogin() {
+      $("loginError").textContent = "";
+      $("loginModal").classList.remove("hidden");
+      $("email").focus();
+    }
 
-  $('overallText').textContent =
-    `${saved.size} of 30 days logged · ${Math.round(saved.size/30*100)}%`;
-  $('overallBar').style.width = `${saved.size/30*100}%`;
+    function hideLogin() {
+      $("loginModal").classList.add("hidden");
+    }
 
-  const a = [...own].sort((x,y)=>y.date.localeCompare(x.date));
-  const last = a.find(x=>Number.isFinite(x.weight));
+    $("loginButton").onclick = showLogin;
+    $("closeLogin").onclick = hideLogin;
 
-  $('latest').textContent = last?`${last.weight} kg`:'—';
-  $('goal').textContent = last && Number.isFinite(last.target)?
-    `${(last.weight-last.target).toFixed(1)} kg ${
-      last.weight>=last.target?'above':'below'
-    } target (${last.target} kg)` :
-    'Enter your target weight to track progress.';
+    document.querySelectorAll(".login-trigger")
+      .forEach(button => {
+        button.onclick = showLogin;
+      });
 
-  const alcoholDays = own.filter(x=>x.checks?.[3]).length;
-  $('myStats').textContent =
-    `${saved.size} check-ins · ${alcoholDays} alcohol-free days logged`;
+    $("loginModal").addEventListener("click", event => {
+      if (event.target === $("loginModal")) {
+        hideLogin();
+      }
+    });
 
-  renderChart(a);
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape") {
+        hideLogin();
+      }
+    });
 
-  $('history').innerHTML = a.length ? a.map(x=>{
-    const n = dayNum(x.date);
-    const juices = x.juices?.filter(j=>j.consumed)||[];
-    const meals = x.meals||{};
-    return `<div class="entry">
-      <strong>Day ${n} · ${safe(x.date)}</strong> ·
-      ${safe(x.weight)} kg<br>
-      <small>${n<=3?
-        `🥤 ${juices.length}/6 juices · ${
-          juices.map(j=>safe(j.name||'Juice')).join(', ')
-        }`:
-        `🥗 ${
-          ['breakfast','lunch','dinner','snacks']
-            .filter(k=>meals[k]?.trim()).length
-        }/4 meal fields logged`
-      }</small><br>
-      <small>Water: ${safe(x.water??'—')} L ·
-      Exercise: ${safe(x.exercise??'—')} min ·
-      Habits: ${(x.checks||[]).filter(Boolean).length}/5</small>
-      ${n>3?`<br><small>${
-        safe(Object.values(meals).filter(Boolean).join(' | '))
-      }</small>`:''}
-      ${x.notes?`<br><small>${safe(x.notes)}</small>`:''}
-    </div>`;
-  }).join('') : 'No entries yet.';
+    // LOGIN AUTHENTICATION
 
-  $('shared').innerHTML = ['Mahesh','Srini'].map(name=>{
-    const data = all.filter(x=>x.person===name)
-      .sort((a,b)=>b.date.localeCompare(a.date));
-    const v = data[0];
-    const count = new Set(data.map(x=>x.date)).size;
-    return `<div class="card" style="margin:0">
-      <h2>${name}</h2>
-      <div class="stat">${v?safe(v.weight)+' kg':'—'}</div>
-      <div class="muted">${count}/30 days logged
-        ${v?' · Last: '+safe(v.date):''}</div>
-      ${v?`<p class="muted">
-        Target: ${safe(v.target)} kg · ${
-          dayNum(v.date)<=3 ?
-          'Juices: '+(v.juices||[]).filter(j=>j.consumed).length+'/6':
-          'Healthy meals logged'
-        }</p>`:''}
-    </div>`;
-  }).join('');
-}
+    $("loginForm").onsubmit = async event => {
+      event.preventDefault();
 
-$('day').onchange = ()=>selectDate($('day').value);
+      const email = $("email").value.trim();
+      const password = $("password").value;
 
-$('signin').onclick = async ()=>{
-  try {
-    await signInWithEmailAndPassword(
-      auth,$('email').value.trim(),$('password').value
-    );
-  } catch(e) {
-    msg('Sign-in failed: '+e.message,true);
-  }
-};
+      $("submitLogin").disabled = true;
+      $("loginError").textContent = "";
 
-$('signout').onclick = ()=>signOut(auth);
+      try {
+        const result = await signInWithEmailAndPassword(
+          auth,
+          email,
+          password
+        );
 
-$('save').onclick = async ()=>{
-  if (!uid || !members[uid])
-    return msg('Account not authorized.',true);
+        if (!MEMBERS[result.user.uid]) {
+          await signOut(auth);
+          throw new Error(
+            "This account is not an invited member."
+          );
+        }
 
-  const date=activeDate, n=dayNum(date);
-  const weightStr=$('weight').value.trim();
-  const targetStr=$('target').value.trim();
-  const weight=Number(weightStr),target=Number(targetStr);
+        $("password").value = "";
+        hideLogin();
 
-  if (!n || !weightStr || !targetStr ||
-      weight<20 || weight>400 || target<20 || target>400 ||
-      !Number.isFinite(weight) || !Number.isFinite(target))
-    return msg('Enter a valid weight and target (20–400 kg).',true);
+      } catch (error) {
+        $("loginError").textContent =
+          error.code === "auth/invalid-credential"
+            ? "Incorrect email or password."
+            : error.message;
+      } finally {
+        $("submitLogin").disabled = false;
+      }
+    };
 
-  const water=$('water').value.trim();
-  const exercise=$('exercise').value.trim();
+    $("logoutButton").onclick = async () => {
+      await signOut(auth);
+    };
 
-  if ((water && (+water<0 || +water>15)) ||
-      (exercise && (+exercise<0 || +exercise>600)))
-    return msg('Check water and exercise values.',true);
+    // FORM FIELDS
 
-  const record = {
-    owner:uid,
-    person:members[uid],
-    date,
-    weight,
-    target,
-    water:water?+water:null,
-    exercise:exercise?+exercise:null,
-    checks:habits.map((_,i)=>$('h'+i).checked),
-    feeling:$('feeling').value,
-    notes:$('notes').value.slice(0,1000),
-    otherIntake:$('other').value.slice(0,500),
-    cleanseDay:n<=3?n:0,
-    cleansePackage:$('package').value.slice(0,120),
-    juices:Array.from({length:6},(_,i)=>({
-      consumed:n<=3 && $('j'+i).checked,
-      name:$('jn'+i).value.slice(0,100),
-      time:$('jt'+i).value
-    })),
-    meals:Object.fromEntries(
-      ['breakfast','lunch','dinner','snacks'].map(k=>[
-        k,$(k).value.slice(0,500)
-      ])
-    ),
-    updatedAt:serverTimestamp()
-  };
+    const textFields = [
+      "weight",
+      "targetWeight",
+      "water",
+      "breakfast",
+      "lunch",
+      "dinner",
+      "snacks",
+      "exercise",
+      "feeling",
+      "notes"
+    ];
 
-  $('save').disabled=true;
-  try {
-    await setDoc(doc(db,'checkins',uid+'_'+date),record);
-    dirty=false;
-    msg(`Day ${n} saved successfully!`);
-  } catch(e) {
-    msg('Save failed: '+e.message,true);
-  } finally {
-    $('save').disabled=false;
-  }
-};
+    const checkboxFields = [
+      "noAlcohol",
+      "mealPlan",
+      "workoutDone"
+    ];
 
-document.querySelectorAll(
-  '#app input:not(#day),#app textarea,#app select'
-).forEach(el=>{
-  el.addEventListener('input',()=>{
-    dirty=true;
-    progress();
-  });
-  el.addEventListener('change',()=>{
-    dirty=true;
-    progress();
-  });
-});
+    function clearForm() {
+      textFields.forEach(id => {
+        $(id).value = "";
+      });
 
-onAuthStateChanged(auth,user=>{
-  if (unsubscribe) {
-    unsubscribe();
-    unsubscribe=null;
-  }
+      checkboxFields.forEach(id => {
+        $(id).checked = false;
+      });
+    }
 
-  uid=user?.uid??null;
-  own=[];
-  all=[];
-  dirty=false;
+    function loadSelectedDate() {
+      if (!currentUser) return;
 
-  $('auth').classList.toggle('hide',!!user);
-  $('app').classList.toggle('hide',!user);
+      clearForm();
 
-  if (!user) {
-    msg('Sign in to begin.');
-    return;
-  }
+      const record = checkins.find(item =>
+        item.owner === currentUser.uid &&
+        item.date === $("checkinDate").value
+      );
 
-  if (!members[uid]) {
-    $('app').classList.add('hide');
-    msg('This account is not authorized.',true);
-    return;
-  }
+      if (!record) {
+        $("saveStatus").textContent = "";
+        return;
+      }
 
-  $('person').value=members[uid];
-  $('who').textContent=user.email;
+      textFields.forEach(id => {
+        if (
+          record[id] !== undefined &&
+          record[id] !== null
+        ) {
+          $(id).value = record[id];
+        }
+      });
 
-  activeDate=iso(new Date());
-  if (!dayNum(activeDate))
-    activeDate=activeDate<START?START:END;
+      checkboxFields.forEach(id => {
+        $(id).checked = !!record[id];
+      });
 
-  $('day').value=activeDate;
-  loadDay();
-  render();
-  msg('Signed in. Your check-ins are syncing.');
+      $("saveStatus").textContent =
+        "Saved entry loaded for this date.";
+    }
 
-  unsubscribe=onSnapshot(collection(db,'checkins'),snap=>{
-    all=snap.docs.map(d=>d.data())
-      .filter(x=>members[x.owner] && dayNum(x.date));
-    own=all.filter(x=>x.owner===uid);
-    render();
-    if (!dirty) loadDay();
-  },e=>msg('Firestore read failed: '+e.message,true));
-});
-</script>
+    $("checkinDate").onchange = loadSelectedDate;
+
+    // SAVE DAILY CHECK-IN
+
+    $("saveCheckin").onclick = async () => {
+      if (!currentUser) return;
+
+      const date = $("checkinDate").value;
+
+      if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) {
+        $("saveStatus").textContent =
+          "Please choose a valid date.";
+        return;
+      }
+
+      const record = {
+        owner: currentUser.uid,
+        person: MEMBERS[currentUser.uid],
+        date: date,
+        updatedAt: serverTimestamp()
+      };
+
+      const numericFields = [
+        "weight",
+        "targetWeight",
+        "water",
+        "exercise"
+      ];
+
+      textFields.forEach(id => {
+        const value = $(id).value.trim();
+
+        if (numericFields.includes(id)) {
+          record[id] = value === ""
+            ? null
+            : Number(value);
+        } else {
+          record[id] = value;
+        }
+      });
+
+      checkboxFields.forEach(id => {
+        record[id] = $(id).checked;
+      });
+
+      $("saveCheckin").disabled = true;
+      $("saveStatus").textContent = "Saving...";
+
+      try {
+        await setDoc(
+          doc(
+            db,
+            "checkins",
+            currentUser.uid + "_" + date
+          ),
+          record
+        );
+
+        $("saveStatus").textContent =
+          "✓ Check-in saved successfully!";
+
+      } catch (error) {
+        $("saveStatus").textContent =
+          "Save failed: " + error.message;
+      } finally {
+        $("saveCheckin").disabled = false;
+      }
+    };
+
+    // RENDER DASHBOARD
+
+    function displayValue(value) {
+      return value === undefined ||
+        value === null ||
+        value === ""
+          ? "—"
+          : String(value);
+    }
+
+    function renderDashboard() {
+      if (!currentUser) return;
+
+      const mine = checkins
+        .filter(item =>
+          item.owner === currentUser.uid
+        )
+        .sort((a, b) =>
+          b.date.localeCompare(a.date)
+        );
+
+      $("myDays").textContent = mine.length;
+      $("totalEntries").textContent = checkins.length;
+
+      const latestWeightEntry = mine.find(item =>
+        item.weight !== null &&
+        item.weight !== undefined &&
+        item.weight !== ""
+      );
+
+      $("latestWeight").textContent =
+        latestWeightEntry
+          ? displayValue(latestWeightEntry.weight)
+          : "—";
+
+      // Personal history
+
+      $("history").replaceChildren();
+
+      if (mine.length === 0) {
+        $("history").textContent =
+          "No check-ins yet. Start today!";
+      }
+
+      mine.slice(0, 10).forEach(item => {
+        const div = document.createElement("div");
+        div.className = "history-item";
+
+        const title = document.createElement("strong");
+        title.textContent = item.date;
+
+        const details = document.createElement("span");
+
+        details.textContent =
+          "Weight: " + displayValue(item.weight) +
+          " kg · Water: " + displayValue(item.water) +
+          " glasses · Exercise: " +
+          displayValue(item.exercise) + " min";
+
+        div.append(title, details);
+
+        div.style.cursor = "pointer";
+
+        div.onclick = () => {
+          $("checkinDate").value = item.date;
+          loadSelectedDate();
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+          });
+        };
+
+        $("history").appendChild(div);
+      });
+
+      // Buddy progress
+
+      $("buddyActivity").replaceChildren();
+
+      Object.entries(MEMBERS).forEach(
+        ([uid, name]) => {
+
+          const entries = checkins
+            .filter(item => item.owner === uid)
+            .sort((a, b) =>
+              b.date.localeCompare(a.date)
+            );
+
+          const div = document.createElement("div");
+          div.className = "history-item";
+
+          const title = document.createElement("strong");
+          title.textContent =
+            name + " · " + entries.length + " check-ins";
+
+          const detail = document.createElement("span");
+
+          detail.textContent = entries.length
+            ? "Latest: " + entries[0].date
+            : "No entries yet";
+
+          div.append(title, detail);
+          $("buddyActivity").appendChild(div);
+        }
+      );
+
+      // Challenge timeline
+
+      const start = new Date("2026-11-02T12:00:00");
+      const now = new Date(localToday() + "T12:00:00");
+
+      const elapsed = Math.floor(
+        (now - start) / 86400000
+      );
+
+      const day = Math.max(
+        1,
+        Math.min(30, elapsed + 1)
+      );
+
+      $("challengeProgress").style.width =
+        (day / 30 * 100) + "%";
+
+      $("challengeDay").textContent =
+        "Day " + day + " of 30";
+
+      loadSelectedDate();
+    }
+
+    // AUTH STATE AND LIVE FIRESTORE SYNC
+
+    onAuthStateChanged(auth, async user => {
+
+      if (unsubscribe) {
+        unsubscribe();
+        unsubscribe = null;
+      }
+
+      if (user && !MEMBERS[user.uid]) {
+        currentUser = null;
+        await signOut(auth);
+        return;
+      }
+
+      currentUser = user;
+
+      $("landing").classList.toggle(
+        "hidden",
+        !!user
+      );
+
+      $("dashboard").classList.toggle(
+        "hidden",
+        !user
+      );
+
+      $("loginButton").classList.toggle(
+        "hidden",
+        !!user
+      );
+
+      $("logoutButton").classList.toggle(
+        "hidden",
+        !user
+      );
+
+      if (!user) {
+        checkins = [];
+        return;
+      }
+
+      hideLogin();
+
+      $("welcome").textContent =
+        "Hello, " + MEMBERS[user.uid] + " 👋";
+
+      unsubscribe = onSnapshot(
+        collection(db, "checkins"),
+
+        snapshot => {
+          checkins = snapshot.docs
+            .map(item => item.data())
+            .filter(item => MEMBERS[item.owner]);
+
+          renderDashboard();
+        },
+
+        error => {
+          $("saveStatus").textContent =
+            "Unable to load check-ins: " +
+            error.message;
+        }
+      );
+    });
+
+  </script>
+
 </body>
 </html>
