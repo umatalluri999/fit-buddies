@@ -2,1592 +2,851 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#123d2e">
-  <meta name="description" content="Fitarya — Your Health. Your Progress. Inspired by Anthem Bros Group. Track meals, fitness, habits and daily wellness.">
-  <title>Fitarya | Inspired by Anthem Bros Group</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --green: #1c684b;
-      --dark: #15382b;
-      --light: #f5f8f2;
-      --lime: #d9f1b5;
-      --muted: #68776e;
-      --border: #dfe8dd;
-      --white: #fff;
-    }
-
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-
-    body {
-      margin: 0;
-      background: var(--light);
-      color: var(--dark);
-      font-family: "DM Sans", sans-serif;
-    }
-
-    h1, h2, h3 { font-family: "Outfit", sans-serif; }
-    a { color: inherit; text-decoration: none; }
-    button, input, textarea, select { font: inherit; }
-    button { cursor: pointer; }
-    .hidden { display: none !important; }
-
-    .container {
-      width: min(1150px, calc(100% - 36px));
-      margin: auto;
-    }
-
-    .btn {
-      border: none;
-      padding: 14px 24px;
-      border-radius: 30px;
-      font-weight: 700;
-      display: inline-block;
-      text-align: center;
-      transition: .2s;
-    }
-
-    .btn:hover { transform: translateY(-2px); }
-    .btn:disabled { opacity: .55; cursor: wait; }
-    .primary { background: var(--green); color: white; }
-
-    .outline {
-      background: transparent;
-      border: 1px solid #bacbbd;
-      color: var(--dark);
-    }
-
-    /* HEADER */
-
-    header {
-      background: #ffffffd9;
-      border-bottom: 1px solid var(--border);
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      backdrop-filter: blur(12px);
-    }
-
-    .nav {
-      min-height: 78px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 15px;
-    }
-
-    .logo {
-      font-family: "Outfit", sans-serif;
-      font-size: 30px;
-      font-weight: 800;
-      letter-spacing: -1.5px;
-    }
-
-    .logo span { color: #84b758; }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 22px;
-      font-size: 14px;
-      font-weight: 700;
-    }
-
-    /* HERO */
-
-    .hero {
-      min-height: 620px;
-      display: grid;
-      grid-template-columns: 1.1fr .9fr;
-      align-items: center;
-      gap: 50px;
-      padding: 65px 0 90px;
-    }
-
-    .eyebrow {
-      display: inline-block;
-      background: #e5f2db;
-      color: var(--green);
-      border-radius: 30px;
-      padding: 10px 16px;
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    }
-
-    .hero h1 {
-      font-size: clamp(45px, 6vw, 80px);
-      line-height: 1.05;
-      letter-spacing: -3px;
-      margin: 25px 0;
-    }
-
-    .hero h1 em {
-      color: var(--green);
-      font-style: normal;
-    }
-
-    .hero p {
-      color: var(--muted);
-      font-size: 18px;
-      line-height: 1.8;
-      max-width: 530px;
-    }
-
-    .hero-buttons {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-top: 30px;
-    }
-
-    /* ANTHEM BROS CAPTION */
-
-    .inspired-caption {
-      margin-top: 30px;
-      padding: 17px 24px;
-      display: inline-block;
-      background: #e8f3dd;
-      border: 1px solid #d0e5c5;
-      border-radius: 18px;
-      text-align: center;
-    }
-
-    .inspired-caption span {
-      display: block;
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .inspired-caption strong {
-      display: block;
-      color: var(--green);
-      font-size: 19px;
-      margin-top: 5px;
-      font-family: "Outfit", sans-serif;
-    }
-
-    .inspired-caption p {
-      font-size: 12px;
-      margin: 6px 0 0;
-      color: var(--muted);
-      letter-spacing: .5px;
-      line-height: 1.5;
-    }
-
-    .hero-art {
-      min-height: 450px;
-      border-radius: 35px;
-      background:
-        radial-gradient(circle at 25% 20%, #d7f4a6, transparent 50%),
-        linear-gradient(135deg, #b8d9a6, #7fb69c);
-      display: grid;
-      place-items: center;
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 20px 50px #244e2b25;
-    }
-
-    .hero-circle {
-      width: 290px;
-      height: 290px;
-      background: #ffffff55;
-      border: 1px solid #ffffff88;
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      font-size: 115px;
-      box-shadow:
-        0 0 0 30px #ffffff22,
-        0 0 0 65px #ffffff15;
-    }
-
-    .floating {
-      position: absolute;
-      background: #ffffffef;
-      border-radius: 17px;
-      padding: 15px 18px;
-      font-size: 13px;
-      font-weight: 700;
-      box-shadow: 0 12px 35px #234b2d30;
-    }
-
-    .floating small {
-      display: block;
-      color: var(--muted);
-      margin-top: 5px;
-      font-weight: 400;
-    }
-
-    .float1 { top: 45px; left: 18px; }
-    .float2 { right: 15px; bottom: 45px; }
-
-    /* SECTIONS */
-
-    section.content { padding: 70px 0; }
-
-    .section-title {
-      text-align: center;
-      max-width: 650px;
-      margin: 0 auto 40px;
-    }
-
-    .section-title h2 {
-      font-size: clamp(32px, 4vw, 48px);
-      letter-spacing: -1.5px;
-      margin: 15px 0;
-    }
-
-    .section-title p {
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
-    .features {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-
-    .card {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      padding: 28px;
-    }
-
-    .card-icon {
-      width: 60px;
-      height: 60px;
-      display: grid;
-      place-items: center;
-      background: #edf5e5;
-      border-radius: 18px;
-      font-size: 28px;
-    }
-
-    .card h3 {
-      font-size: 22px;
-      margin: 20px 0 10px;
-    }
-
-    .card p {
-      color: var(--muted);
-      line-height: 1.7;
-      font-size: 14px;
-    }
-
-    /* TEAM */
-
-    .team-section {
-      background: var(--dark);
-      border-radius: 35px;
-      color: white;
-      padding: 50px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 35px;
-      align-items: center;
-    }
-
-    .team-section h2 {
-      font-size: 42px;
-      margin: 15px 0;
-    }
-
-    .team-section p {
-      color: #d2e6d9;
-      line-height: 1.8;
-    }
-
-    .team-members {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 15px;
-    }
-
-    .member {
-      background: #ffffff15;
-      border: 1px solid #ffffff30;
-      padding: 25px;
-      border-radius: 22px;
-      text-align: center;
-    }
-
-    .avatar {
-      width: 70px;
-      height: 70px;
-      background: var(--lime);
-      color: var(--dark);
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      font-size: 28px;
-      font-weight: 800;
-      margin: 0 auto 15px;
-    }
-
-    .member strong { display: block; }
-
-    .member small {
-      display: block;
-      margin-top: 7px;
-      color: #cce2d2;
-    }
-
-    /* CTA */
-
-    .cta {
-      text-align: center;
-      padding: 75px 20px;
-      background: #e8f3dd;
-      border-radius: 35px;
-      margin: 70px 0;
-    }
-
-    .cta h2 {
-      font-size: 43px;
-      margin: 0 0 15px;
-    }
-
-    .cta p {
-      color: var(--muted);
-      margin-bottom: 25px;
-    }
-
-    footer {
-      padding: 40px 0;
-      border-top: 1px solid var(--border);
-      color: var(--muted);
-      font-size: 13px;
-      text-align: center;
-      line-height: 1.8;
-    }
-
-    .footer-brand {
-      color: var(--dark);
-      font-family: "Outfit", sans-serif;
-      font-size: 23px;
-      font-weight: 800;
-    }
-
-    .footer-anthem {
-      color: var(--green);
-      font-weight: 700;
-    }
-
-    /* LOGIN */
-
-    .modal-backdrop {
-      position: fixed;
-      inset: 0;
-      background: #0b251bca;
-      display: grid;
-      place-items: center;
-      z-index: 100;
-      padding: 18px;
-    }
-
-    .modal {
-      width: min(440px, 100%);
-      background: white;
-      padding: 35px;
-      border-radius: 26px;
-      position: relative;
-    }
-
-    .modal h2 {
-      font-size: 32px;
-      margin: 10px 0;
-    }
-
-    .modal p {
-      color: var(--muted);
-      line-height: 1.6;
-    }
-
-    .close {
-      position: absolute;
-      top: 18px;
-      right: 20px;
-      background: #eef3eb;
-      border: none;
-      border-radius: 50%;
-      width: 35px;
-      height: 35px;
-      font-size: 22px;
-    }
-
-    .field {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      font-size: 13px;
-      font-weight: 700;
-      margin-bottom: 16px;
-    }
-
-    .field input,
-    .field textarea,
-    .field select {
-      width: 100%;
-      border: 1px solid #cbd9ca;
-      border-radius: 12px;
-      background: #fcfdfa;
-      padding: 13px;
-      color: var(--dark);
-    }
-
-    .field textarea {
-      min-height: 95px;
-      resize: vertical;
-    }
-
-    .error {
-      color: #b34432;
-      font-size: 13px;
-      margin-top: 12px;
-    }
-
-    /* DASHBOARD */
-
-    .dashboard { padding: 30px 0 80px; }
-
-    .dashboard h1 {
-      font-size: 42px;
-      margin-bottom: 5px;
-    }
-
-    .dashboard-subtitle { color: var(--muted); }
-
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      margin: 25px 0;
-    }
-
-    .stat {
-      background: #e7f2df;
-      border-radius: 20px;
-      padding: 22px;
-    }
-
-    .stat strong {
-      font: 700 32px "Outfit", sans-serif;
-      display: block;
-    }
-
-    .stat span {
-      font-size: 13px;
-      color: var(--muted);
-    }
-
-    .dashboard-grid {
-      display: grid;
-      grid-template-columns: 1.3fr .7fr;
-      gap: 20px;
-    }
-
-    .panel {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      padding: 28px;
-      margin-bottom: 20px;
-    }
-
-    .panel h2 {
-      margin: 0 0 23px;
-      font-size: 24px;
-    }
-
-    .form-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 15px;
-    }
-
-    .full { grid-column: 1 / -1; }
-
-    .checkboxes {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .checkboxes label {
-      background: #f1f7ed;
-      padding: 12px;
-      border-radius: 12px;
-      font-size: 13px;
-    }
-
-    .checkboxes input { accent-color: var(--green); }
-
-    .history-item {
-      border: 1px solid var(--border);
-      padding: 14px;
-      border-radius: 14px;
-      margin-bottom: 10px;
-      font-size: 13px;
-    }
-
-    .history-item strong {
-      display: block;
-      margin-bottom: 6px;
-    }
-
-    .history-item span { color: var(--muted); }
-
-    .challenge-box {
-      background: #e9f4df;
-      padding: 20px;
-      border-radius: 18px;
-      margin-bottom: 25px;
-    }
-
-    .progress-track {
-      height: 10px;
-      border-radius: 10px;
-      background: #c9dcbf;
-      overflow: hidden;
-      margin-top: 15px;
-    }
-
-    .progress-fill {
-      height: 100%;
-      width: 0%;
-      background: var(--green);
-    }
-
-    .status {
-      color: var(--green);
-      font-size: 13px;
-      margin-top: 15px;
-      min-height: 20px;
-    }
-
-    @media (max-width: 850px) {
-      .hero, .team-section, .dashboard-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .features { grid-template-columns: repeat(2, 1fr); }
-      .hero-art { min-height: 350px; }
-      .nav-links a { display: none; }
-    }
-
-    @media (max-width: 570px) {
-      .features, .form-grid { grid-template-columns: 1fr; }
-      .hero h1 { letter-spacing: -2px; }
-
-      .hero-circle {
-        width: 210px;
-        height: 210px;
-        font-size: 85px;
-      }
-
-      .team-section { padding: 30px 20px; }
-      .team-members { grid-template-columns: 1fr 1fr; }
-      .stats { gap: 8px; }
-      .stat { padding: 13px; }
-      .stat strong { font-size: 23px; }
-      .panel { padding: 20px; }
-      .full { grid-column: auto; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fitarya | Grow Healthier Together</title>
+<style>
+:root{
+  --green:#176b4d;--light:#e9f6ed;--dark:#18372c;
+  --cream:#fafbf7;--line:#dce7df
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:var(--cream);color:var(--dark)}
+header{background:white;border-bottom:1px solid var(--line);padding:16px 5%;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;position:sticky;top:0;z-index:5}
+.logo{font-size:26px;font-weight:800;color:var(--green)}
+nav{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+button,.btn{background:var(--green);color:white;border:0;padding:12px 17px;border-radius:10px;cursor:pointer;font-weight:600}
+button:hover{opacity:.9}
+button.secondary{background:var(--light);color:var(--green)}
+button:disabled{opacity:.5;cursor:not-allowed}
+.hero{padding:70px 6%;text-align:center;background:linear-gradient(140deg,#e5f5e9,#fdfcf5)}
+.hero h1{font-size:clamp(32px,6vw,60px);margin:15px 0}
+.hero p{max-width:720px;margin:14px auto;line-height:1.7}
+.tag{display:inline-block;background:#d5efdf;color:var(--green);border-radius:30px;padding:9px 16px;font-weight:700}
+section{padding:48px 5%;max-width:1250px;margin:auto}
+h2{font-size:30px;margin:0 0 12px}
+.muted{color:#60766b;line-height:1.6}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
+.card{background:white;border:1px solid var(--line);border-radius:17px;padding:22px;box-shadow:0 5px 20px #143d2010}
+.card h3{margin-top:0}
+.card p{line-height:1.6}
+.feature{cursor:pointer;transition:transform .2s}
+.feature:hover{transform:translateY(-4px)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px}
+.stat{background:var(--light);padding:20px;border-radius:14px;text-align:center}
+.stat strong{display:block;font-size:27px;color:var(--green)}
+input,select,textarea{width:100%;padding:12px;border:1px solid #cbd9cf;border-radius:9px;font:inherit;margin:6px 0 12px;background:white}
+label{font-size:14px;font-weight:600}
+textarea{min-height:75px}
+.hidden{display:none!important}
+.tabs{display:flex;gap:9px;flex-wrap:wrap;margin:18px 0}
+.tabs button{background:#e4eee6;color:var(--dark)}
+.tabs button.active{background:var(--green);color:white}
+.row{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.member{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}
+.bar{height:9px;background:#e4eee7;border-radius:20px;overflow:hidden;margin:7px 0}
+.fill{height:100%;background:#35a875;border-radius:20px}
+.check{display:flex;align-items:center;gap:10px;margin:10px 0}
+.check input{width:18px;height:18px;margin:0}
+.pill{display:inline-block;padding:6px 10px;background:var(--light);color:var(--green);border-radius:30px;font-size:12px;font-weight:700}
+.notice{padding:14px;background:#fff7e5;border-radius:10px;margin:12px 0;line-height:1.5}
+.error{color:#ae3131}
+.success{color:var(--green)}
+footer{text-align:center;background:#123b2b;color:white;padding:30px}
+dialog{border:0;border-radius:18px;padding:25px;max-width:430px;width:92%;box-shadow:0 15px 60px #0003}
+dialog::backdrop{background:#0008}
+@media(max-width:600px){header{position:static}.hero{padding:45px 5%}}
+</style>
 </head>
-
 <body>
 
-  <!-- NAVIGATION -->
+<header>
+  <div class="logo">🌿 Fitarya</div>
+  <nav>
+    <button class="secondary" onclick="showHome()">Home</button>
+    <button class="secondary" onclick="showDemo()">Team Demo</button>
+    <button id="loginBtn" onclick="openLogin()">Login / Sign Up</button>
+    <button id="dashboardBtn" class="hidden" onclick="showDashboard()">My Dashboard</button>
+    <button id="logoutBtn" class="secondary hidden" onclick="logout()">Logout</button>
+  </nav>
+</header>
 
-  <header>
-    <div class="container nav">
+<div id="home">
+  <div class="hero">
+    <span class="tag">🤝 Inspired by Anthem Bros Group</span>
+    <h1>Grow healthier.<br>Together.</h1>
+    <p>
+      Fitarya brings nutrition, movement, hydration,
+      weight tracking and friendly team challenges
+      into one wellness journey.
+    </p>
+    <button onclick="openLogin()">Start Your Journey</button>
+    <button class="secondary" onclick="showDemo()">Explore Team Dashboard</button>
+    <p class="muted">Brotherhood • Wellness • Progress</p>
+  </div>
 
-      <a href="#home" class="logo">
-        ✦ fitarya<span>.</span>
-      </a>
+  <section>
+    <h2>Everything you need to grow healthier</h2>
+    <p class="muted">Explore practical examples for every part of your journey.</p>
+    <div class="grid" id="features"></div>
+  </section>
 
-      <nav class="nav-links">
-        <a href="#features">Features</a>
-        <a href="#team">Our Team</a>
-        <a href="#about">Our Mission</a>
-
-        <button id="loginButton" class="btn primary">
-          Member Login
-        </button>
-
-        <button id="logoutButton" class="btn outline hidden">
-          Log Out
-        </button>
-      </nav>
-    </div>
-  </header>
-
-  <!-- HOMEPAGE -->
-
-  <main id="landing">
-
-    <section class="container hero" id="home">
-
-      <div>
-        <span class="eyebrow">
-          A better you, every day
-        </span>
-
-        <h1>
-          Wellness is a
-          <em>journey.</em>
-          <br>
-          Make it yours.
-        </h1>
-
-        <p>
-          A personal space to track your health,
-          build better eating habits, stay active
-          and celebrate your daily progress.
-          Every small step matters.
-        </p>
-
-        <div class="hero-buttons">
-          <button class="btn primary login-trigger">
-            Start Your Journey →
-          </button>
-
-          <a href="#features" class="btn outline">
-            Explore Fitarya
-          </a>
-        </div>
-
-        <!-- ANTHEM BROS CREDIT -->
-
-        <div class="inspired-caption">
-          <span>🤝 Inspired by</span>
-          <strong>Anthem Bros Group</strong>
-          <p>Brotherhood • Wellness • Progress</p>
-        </div>
+  <section>
+    <h2>Our 30-Day Wellness Journey</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>🥤 Days 1–3</h3>
+        <p>Juice-focused introduction using Pressed Juicery drinks
+        alongside balanced food, protein and sufficient calories.</p>
+        <p class="muted">A juice-only cleanse is not necessary for detoxification.</p>
       </div>
-
-      <div class="hero-art">
-        <div class="hero-circle">🥑</div>
-
-        <div class="floating float1">
-          🌿 Healthy habits
-          <small>One day at a time</small>
-        </div>
-
-        <div class="floating float2">
-          💚 Daily progress
-          <small>Food · Water · Movement</small>
-        </div>
+      <div class="card">
+        <h3>🥗 Days 4–30</h3>
+        <p>Balanced Indian-inspired meals, daily movement,
+        hydration and sustainable habits.</p>
       </div>
-
-    </section>
-
-    <!-- FEATURES -->
-
-    <section class="content container" id="features">
-
-      <div class="section-title">
-        <span class="eyebrow">Your wellness companion</span>
-
-        <h2>
-          Everything you need to grow healthier.
-        </h2>
-
-        <p>
-          Fitarya brings your nutrition, movement,
-          health habits and daily progress together
-          in one simple place.
-        </p>
-      </div>
-
-      <div class="features">
-
-        <article class="card">
-          <div class="card-icon">🥗</div>
-          <h3>Diet & Nutrition</h3>
-          <p>
-            Record your breakfast, lunch, dinner,
-            snacks and daily eating habits.
-          </p>
-        </article>
-
-        <article class="card">
-          <div class="card-icon">⚖️</div>
-          <h3>Weight Tracking</h3>
-          <p>
-            Track your weight and target goals
-            as you progress through your journey.
-          </p>
-        </article>
-
-        <article class="card">
-          <div class="card-icon">🏃</div>
-          <h3>Fitness & Movement</h3>
-          <p>
-            Log exercise time and build
-            a consistent movement routine.
-          </p>
-        </article>
-
-        <article class="card">
-          <div class="card-icon">💧</div>
-          <h3>Hydration</h3>
-          <p>
-            Keep track of daily water consumption
-            and hydration habits.
-          </p>
-        </article>
-
-        <article class="card">
-          <div class="card-icon">📊</div>
-          <h3>Daily Progress</h3>
-          <p>
-            Record your daily check-ins and review
-            your progress over time.
-          </p>
-        </article>
-
-        <article class="card">
-          <div class="card-icon">🤝</div>
-          <h3>Buddy Challenges</h3>
-          <p>
-            Stay accountable with friends
-            and celebrate achievements together.
-          </p>
-        </article>
-
-      </div>
-    </section>
-
-    <!-- TEAM -->
-
-    <section class="container content" id="team">
-
-      <div class="team-section">
-
-        <div>
-          <span class="eyebrow">Meet the team</span>
-
-          <h2>
-            Two friends.
-            One healthier journey.
-          </h2>
-
-          <p>
-            Fitarya began with a simple idea:
-            making healthy living easier through
-            friendship, consistency and
-            daily accountability.
-          </p>
-
-          <p>
-            Inspired by the spirit of
-            <strong>Anthem Bros Group</strong>,
-            we're building better habits together,
-            one day at a time.
-          </p>
-        </div>
-
-        <div class="team-members">
-
-          <div class="member">
-            <div class="avatar">M</div>
-            <strong>Mahesh</strong>
-            <small>Founding Member</small>
-          </div>
-
-          <div class="member">
-            <div class="avatar">S</div>
-            <strong>Srini</strong>
-            <small>Founding Member</small>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- MISSION -->
-
-    <section class="container content" id="about">
-
-      <div class="section-title">
-        <span class="eyebrow">Our philosophy</span>
-
-        <h2>Progress over perfection.</h2>
-
-        <p>
-          Being healthy isn't about one perfect
-          meal or one intense workout.
-          It's about making choices you can
-          maintain and improving a little
-          every day.
-        </p>
-
-        <p>
-          <strong>
-            Inspired by Anthem Bros Group —
-            united by friendship, driven by progress.
-          </strong>
-        </p>
-      </div>
-
-    </section>
-
-    <!-- CALL TO ACTION -->
-
-    <section class="container">
-      <div class="cta">
-
-        <h2>Ready for a healthier chapter?</h2>
-
-        <p>
-          Your journey begins with today's
-          first small step.
-        </p>
-
-        <button class="btn primary login-trigger">
-          Member Login →
-        </button>
-
-        <p style="font-size:12px;margin-top:20px">
-          Private member access
-        </p>
-
-      </div>
-    </section>
-
-  </main>
-
-  <!-- PRIVATE MEMBER DASHBOARD -->
-
-  <main id="dashboard" class="hidden">
-
-    <div class="container dashboard">
-
-      <h1 id="welcome">Welcome back 👋</h1>
-
-      <p class="dashboard-subtitle">
-        Your personal wellness dashboard.
-        Track today. Improve tomorrow.
-      </p>
-
-      <div class="stats">
-
-        <div class="stat">
-          <strong id="myDays">0</strong>
-          <span>Your check-ins</span>
-        </div>
-
-        <div class="stat">
-          <strong id="latestWeight">—</strong>
-          <span>Latest weight (kg)</span>
-        </div>
-
-        <div class="stat">
-          <strong id="totalEntries">0</strong>
-          <span>Team check-ins</span>
-        </div>
-
-      </div>
-
-      <div class="dashboard-grid">
-
-        <div>
-          <div class="panel">
-
-            <h2>🌿 Daily Health Check-in</h2>
-
-            <div class="form-grid">
-
-              <label class="field">
-                Date
-                <input type="date" id="checkinDate">
-              </label>
-
-              <label class="field">
-                Current Weight (kg)
-                <input type="number" id="weight"
-                  step="0.1" min="1" max="500"
-                  placeholder="e.g. 92.5">
-              </label>
-
-              <label class="field">
-                Target Weight (kg)
-                <input type="number" id="targetWeight"
-                  step="0.1" min="1" max="500"
-                  placeholder="Your goal">
-              </label>
-
-              <label class="field">
-                Water (glasses)
-                <input type="number" id="water"
-                  min="0" max="50"
-                  placeholder="e.g. 8">
-              </label>
-
-              <label class="field">
-                Breakfast
-                <input id="breakfast"
-                  placeholder="What did you eat?">
-              </label>
-
-              <label class="field">
-                Lunch
-                <input id="lunch"
-                  placeholder="Your lunch">
-              </label>
-
-              <label class="field">
-                Dinner
-                <input id="dinner"
-                  placeholder="Your dinner">
-              </label>
-
-              <label class="field">
-                Snacks / Juices
-                <input id="snacks"
-                  placeholder="Snacks, fruits or juices">
-              </label>
-
-              <label class="field">
-                Exercise (minutes)
-                <input type="number" id="exercise"
-                  min="0" max="1440"
-                  placeholder="e.g. 30">
-              </label>
-
-              <label class="field">
-                How do you feel?
-                <select id="feeling">
-                  <option value="">Choose</option>
-                  <option>Great 😊</option>
-                  <option>Good 🙂</option>
-                  <option>Okay 😐</option>
-                  <option>Tired 😴</option>
-                  <option>Stressed 😟</option>
-                </select>
-              </label>
-
-              <div class="full checkboxes">
-
-                <label>
-                  <input type="checkbox" id="noAlcohol">
-                  No alcohol
-                </label>
-
-                <label>
-                  <input type="checkbox" id="mealPlan">
-                  Followed meal plan
-                </label>
-
-                <label>
-                  <input type="checkbox" id="workoutDone">
-                  Exercise completed
-                </label>
-
-              </div>
-
-              <label class="field full">
-                Notes / Health Observations
-                <textarea id="notes"
-                  placeholder="Sleep, mood, energy or today's achievements..."></textarea>
-              </label>
-
-            </div>
-
-            <button id="saveCheckin" class="btn primary">
-              Save Today's Check-in ✓
-            </button>
-
-            <div id="saveStatus"
-              class="status" role="status"></div>
-
-          </div>
-        </div>
-
-        <aside>
-
-          <div class="panel">
-
-            <h2>🏆 30-Day Challenge</h2>
-
-            <div class="challenge-box">
-
-              <strong>30 Days of Progress</strong>
-
-              <p>November 2 – December 1, 2026</p>
-
-              <div class="progress-track">
-                <div id="challengeProgress"
-                  class="progress-fill"></div>
-              </div>
-
-              <p id="challengeDay">Day 1 of 30</p>
-
-            </div>
-
-            <h2>👥 Buddy Progress</h2>
-
-            <div id="buddyActivity">Loading...</div>
-
-          </div>
-
-          <div class="panel">
-
-            <h2>📅 Your History</h2>
-
-            <div id="history">
-              No check-ins yet.
-            </div>
-
-          </div>
-
-        </aside>
-
+      <div class="card">
+        <h3>🏆 Make It Fun</h3>
+        <p>Create a team, invite buddies, track habits,
+        earn points and celebrate consistency.</p>
       </div>
     </div>
-  </main>
+  </section>
+</div>
 
-  <!-- FOOTER -->
+<section id="featurePage" class="hidden">
+  <button class="secondary" onclick="showHome()">← Back to Home</button>
+  <h2 id="featureTitle" style="margin-top:25px"></h2>
+  <div id="featureContent"></div>
+</section>
 
-  <footer>
-    <div class="container">
+<section id="demo" class="hidden">
+  <button class="secondary" onclick="showHome()">← Back to Home</button>
+  <h2 style="margin-top:25px">🏆 Anthem Wellness Crew</h2>
+  <p class="muted">Example team dashboard with fictional scores.</p>
+  <div class="stats">
+    <div class="stat"><strong>8</strong>Buddies</div>
+    <div class="stat"><strong>30</strong>Challenge Days</div>
+    <div class="stat"><strong>100</strong>Points / Day</div>
+    <div class="stat"><strong>3,000</strong>Maximum Points</div>
+  </div>
+  <div class="card" style="margin-top:20px">
+    <h3>🥇 Weekly Leaderboard</h3>
+    <div id="demoLeaderboard"></div>
+  </div>
+  <div class="card" style="margin-top:20px">
+    <h3>How do buddies earn points?</h3>
+    <div id="pointsExplanation"></div>
+    <button onclick="openLogin()">Create Your Own Team</button>
+  </div>
+</section>
 
-      <div class="footer-brand">✦ FITARYA</div>
-
-      <div>Your Health. Your Progress.</div>
-
-      <div class="footer-anthem">
-        🤝 Inspired by Anthem Bros Group
-      </div>
-
-      <div>
-        Brotherhood • Wellness • Progress
-      </div>
-
-      <div style="margin-top:14px">
-        © <span id="year"></span> Fitarya.
-        All rights reserved.
-      </div>
-
+<section id="dashboard" class="hidden">
+  <div class="row">
+    <div>
+      <h2>👋 Welcome, <span id="welcomeName">Buddy</span></h2>
+      <p class="muted">Your wellness journey starts here.</p>
     </div>
-  </footer>
+    <span class="pill" id="accountEmail"></span>
+  </div>
 
-  <!-- LOGIN MODAL -->
+  <div class="stats">
+    <div class="stat"><strong id="teamCount">0</strong>My Teams</div>
+    <div class="stat"><strong id="myPoints">0</strong>My Points</div>
+    <div class="stat"><strong id="myCheckins">0</strong>Check-ins</div>
+  </div>
 
-  <div id="loginModal"
-    class="modal-backdrop hidden"
-    role="dialog"
-    aria-modal="true"
-    aria-labelledby="loginTitle">
+  <div class="tabs">
+    <button onclick="switchTab('teams')" id="tabTeams">👥 My Teams</button>
+    <button onclick="switchTab('checkin')" id="tabCheckin">📝 Daily Check-in</button>
+    <button onclick="switchTab('ranking')" id="tabRanking">🏆 Leaderboard</button>
+    <button onclick="switchTab('plan')" id="tabPlan">🥗 Diet Plan</button>
+  </div>
 
-    <div class="modal">
-
-      <button class="close"
-        id="closeLogin"
-        aria-label="Close login">×</button>
-
-      <div class="logo">
-        ✦ fitarya<span>.</span>
+  <div id="teamsTab">
+    <div class="grid">
+      <div class="card">
+        <h3>Create a Team</h3>
+        <label>Team Name</label>
+        <input id="newTeamName" placeholder="Anthem Wellness Crew">
+        <label>Challenge Duration (Days)</label>
+        <input id="teamDuration" type="number" value="30" min="1" max="365">
+        <button onclick="createTeam()">Create Team</button>
       </div>
+      <div class="card">
+        <h3>Join a Team</h3>
+        <p class="muted">Ask your buddy for a private invite code.</p>
+        <label>Invite Code</label>
+        <input id="joinCode" placeholder="Enter invite code">
+        <button onclick="joinTeam()">Join Team</button>
+      </div>
+    </div>
+    <h3 style="margin-top:25px">Your Teams</h3>
+    <div id="teamList"></div>
+  </div>
 
-      <h2 id="loginTitle">Welcome back 👋</h2>
+  <div id="checkinTab" class="hidden">
+    <div class="card">
+      <h3>📝 Daily Team Check-in</h3>
+      <label>Select Team</label>
+      <select id="checkinTeam"></select>
+      <label>Date</label>
+      <input id="checkinDate" type="date">
+      <label>Weight (kg) — optional, private</label>
+      <input id="checkinWeight" type="number" step="0.1" min="1" max="500">
+      <label>Meals / Food Notes</label>
+      <textarea id="checkinMeals" placeholder="Grilled chicken, vegetables, yogurt..."></textarea>
+      <label>Water (glasses)</label>
+      <input id="checkinWater" type="number" min="0" max="30" value="0">
 
-      <p>
-        Sign in to access your personal
-        Fitarya health dashboard.
+      <h3>Earn Your Daily Points</h3>
+      <div id="taskChecks"></div>
+
+      <div class="stat">
+        <strong id="todayPoints">0 / 100</strong>
+        Today's Points
+      </div>
+      <br>
+      <button onclick="saveCheckin()">Save Daily Progress</button>
+      <p class="muted">
+        Saving again updates the same day's check-in.
+        It does not award duplicate points.
       </p>
-
-      <form id="loginForm">
-
-        <label class="field">
-          Email Address
-          <input type="email" id="email"
-            autocomplete="username" required>
-        </label>
-
-        <label class="field">
-          Password
-          <input type="password" id="password"
-            autocomplete="current-password" required>
-        </label>
-
-        <button type="submit"
-          class="btn primary"
-          id="submitLogin"
-          style="width:100%">
-          Sign In →
-        </button>
-
-        <div id="loginError"
-          class="error" role="alert"></div>
-
-      </form>
-
-      <p style="font-size:12px">
-        Access is currently available
-        to invited members only.
-      </p>
-
     </div>
   </div>
 
-  <!-- FIREBASE -->
+  <div id="rankingTab" class="hidden">
+    <div class="card">
+      <h3>🏆 Team Leaderboard</h3>
+      <label>Select Team</label>
+      <select id="rankingTeam" onchange="loadLeaderboard()"></select>
+      <div id="liveLeaderboard"></div>
+    </div>
+  </div>
 
-  <script type="module">
+  <div id="planTab" class="hidden">
+    <div class="card">
+      <h3>🥗 Shared Team Diet Plan</h3>
+      <label>Select Team</label>
+      <select id="planTeam" onchange="loadPlan()"></select>
+      <label>Plan</label>
+      <textarea id="planText" style="min-height:220px"></textarea>
+      <button id="savePlanBtn" onclick="savePlan()">Save Team Plan</button>
+      <p class="muted">Only the team creator can edit the shared plan.</p>
+    </div>
+  </div>
 
-    import {
-      initializeApp
-    } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
+  <p id="dashboardMessage"></p>
+</section>
 
-    import {
-      getAuth,
-      onAuthStateChanged,
-      signInWithEmailAndPassword,
-      signOut
-    } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+<dialog id="authDialog">
+  <h2>Welcome to Fitarya 🌿</h2>
+  <p class="muted">Sign in or create your own account.</p>
+  <label>Your Name (for new accounts)</label>
+  <input id="authName" placeholder="Your name">
+  <label>Email</label>
+  <input id="authEmail" type="email" autocomplete="email">
+  <label>Password</label>
+  <input id="authPassword" type="password" autocomplete="current-password">
+  <div class="row">
+    <button onclick="signIn()">Sign In</button>
+    <button class="secondary" onclick="signUp()">Create Account</button>
+    <button class="secondary" onclick="closeLogin()">Cancel</button>
+  </div>
+  <p id="authMessage" class="error"></p>
+</dialog>
 
-    import {
-      getFirestore,
-      collection,
-      doc,
-      setDoc,
-      onSnapshot,
-      serverTimestamp
-    } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
+<footer>
+  <h3>🌿 Fitarya</h3>
+  <p>Inspired by Anthem Bros Group</p>
+  <p>Grow healthier. Together.</p>
+</footer>
 
-    const firebaseConfig = {
-      apiKey: "AIzaSyCzoHhKe-uC_LHXkJ4Oopzg3vRT2xk9IzI",
-      authDomain: "mahesh-srini-diet-buddy.firebaseapp.com",
-      projectId: "mahesh-srini-diet-buddy",
-      storageBucket: "mahesh-srini-diet-buddy.firebasestorage.app",
-      messagingSenderId: "661485924930",
-      appId: "1:661485924930:web:9bb0093a92dd8930bfb3db",
-      measurementId: "G-ZZ35BSFSHX"
-    };
+<script type="module">
+import {initializeApp} from
+"https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
 
-    const MEMBERS = {
-      "8DkIKl4d2jgBSClwE2iaTsq5XHB2": "Mahesh",
-      "pJp6DYXYJygYSXmcb0sfhMp0u5b2": "Srini"
-    };
+import {
+  getAuth,onAuthStateChanged,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,updateProfile
+} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
 
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-    const db = getFirestore(app);
+import {
+  getFirestore,collection,doc,getDoc,getDocs,
+  setDoc,addDoc,query,where,serverTimestamp
+} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
 
-    const $ = id => document.getElementById(id);
+const firebaseConfig={
+  apiKey:"AIzaSyCzoHhKe-uC_LHXkJ4Oopzg3vRT2xk9IzI",
+  authDomain:"mahesh-srini-diet-buddy.firebaseapp.com",
+  projectId:"mahesh-srini-diet-buddy",
+  storageBucket:"mahesh-srini-diet-buddy.firebasestorage.app",
+  messagingSenderId:"661485924930",
+  appId:"1:661485924930:web:9bb0093a92dd8930bfb3db"
+};
 
-    let currentUser = null;
-    let checkins = [];
-    let unsubscribe = null;
+const app=initializeApp(firebaseConfig);
+const auth=getAuth(app);
+const db=getFirestore(app);
 
-    $("year").textContent = new Date().getFullYear();
+let currentUser=null;
+let myTeams=[];
 
-    function localToday() {
-      const d = new Date();
+const $=id=>document.getElementById(id);
 
-      return [
-        d.getFullYear(),
-        String(d.getMonth() + 1).padStart(2, "0"),
-        String(d.getDate()).padStart(2, "0")
-      ].join("-");
-    }
+const tasks=[
+  {id:"checkedIn",label:"Daily check-in",points:20},
+  {id:"diet",label:"Followed team diet plan",points:30},
+  {id:"workout",label:"Completed activity goal",points:25},
+  {id:"hydration",label:"Met hydration goal",points:15},
+  {id:"encouraged",label:"Encouraged a buddy",points:10}
+];
 
-    $("checkinDate").value = localToday();
+const sampleMembers=[
+  ["Mahesh",690],["Srini",665],["Hari",620],
+  ["Siva",590],["Anil",550],["Mahesh2",505],
+  ["Prashanth",465],["Suresh",420]
+];
 
-    // LOGIN
+const defaultPlan=`FITARYA 30-DAY WELLNESS PLAN
 
-    function showLogin() {
-      $("loginError").textContent = "";
-      $("loginModal").classList.remove("hidden");
-      $("email").focus();
-    }
+DAYS 1–3: JUICE-FOCUSED INTRODUCTION
+• Optional Pressed Juicery drinks
+• Include balanced meals and protein
+• Drink water regularly
+• Avoid juice-only restriction
 
-    function hideLogin() {
-      $("loginModal").classList.add("hidden");
-    }
+DAYS 4–30: BALANCED EATING
 
-    $("loginButton").onclick = showLogin;
-    $("closeLogin").onclick = hideLogin;
+Breakfast:
+Vegetable omelet, Greek yogurt or protein oats
 
-    document.querySelectorAll(".login-trigger")
-      .forEach(button => {
-        button.onclick = showLogin;
-      });
+Lunch:
+Grilled chicken/tofu, quinoa or brown rice,
+vegetables and dal
 
-    $("loginModal").addEventListener("click", event => {
-      if (event.target === $("loginModal")) {
-        hideLogin();
-      }
+Snack:
+Fruit, roasted chana or nuts
+
+Dinner:
+Fish, paneer tikka or air-fryer chicken
+with vegetables and salad
+
+DAILY GOALS:
+• Follow your individualized food plan
+• Complete appropriate movement
+• Meet your hydration goal
+• Log progress consistently
+
+Adjust portions and exercise to personal needs.
+No crash dieting or guaranteed weight-loss target.`;
+
+const featureData=[
+  {
+    icon:"🥗",title:"Diet & Nutrition",
+    content:`
+      <h3>A sample healthy Indian-style day</h3>
+      <div class="grid">
+        <div class="card"><h3>Breakfast</h3><p>Vegetable omelet, Greek yogurt and berries</p></div>
+        <div class="card"><h3>Lunch</h3><p>Grilled tandoori chicken or tofu, quinoa, dal and vegetables</p></div>
+        <div class="card"><h3>Snack</h3><p>Apple with roasted chana or a small portion of nuts</p></div>
+        <div class="card"><h3>Dinner</h3><p>Air-fryer chicken, grilled fish or paneer tikka with salad</p></div>
+      </div>
+      <h3>30-day approach</h3>
+      <p>Days 1–3: Optional juice-focused introduction with balanced meals.</p>
+      <p>Days 4–30: Sustainable meals, movement and tracking.</p>
+      <p class="muted">Individual calorie and protein needs vary.</p>`
+  },
+  {
+    icon:"⚖️",title:"Weight Tracking",
+    content:`
+      <h3>Example 30-day journey</h3>
+      <p>Day 1: 96.0 kg</p>
+      <p>Day 8: 95.3 kg</p>
+      <p>Day 15: 94.6 kg</p>
+      <p>Day 22: 93.9 kg</p>
+      <p>Day 30: 93.2 kg</p>
+      <p class="muted">Illustrative only. Real weight naturally fluctuates.</p>
+      <div class="card">
+        <h3>BMI Calculator</h3>
+        <label>Height (cm)</label>
+        <input id="bmiHeight" type="number" value="182">
+        <label>Weight (kg)</label>
+        <input id="bmiWeight" type="number" value="96">
+        <button onclick="calculateBMI()">Calculate BMI</button>
+        <p id="bmiResult"></p>
+      </div>`
+  },
+  {
+    icon:"🏃",title:"Fitness & Movement",
+    content:`
+      <div class="grid">
+        <div class="card"><h3>Monday</h3><p>30-minute brisk walk</p></div>
+        <div class="card"><h3>Tuesday</h3><p>Beginner strength training</p></div>
+        <div class="card"><h3>Wednesday</h3><p>Walking and mobility</p></div>
+        <div class="card"><h3>Thursday</h3><p>Strength or resistance exercise</p></div>
+        <div class="card"><h3>Friday</h3><p>Badminton or another enjoyable activity</p></div>
+        <div class="card"><h3>Weekend</h3><p>Active recovery and outdoor movement</p></div>
+      </div>`
+  },
+  {
+    icon:"💧",title:"Hydration",
+    content:`
+      <div class="card">
+        <h3>Water Tracker Demo</h3>
+        <p id="waterDemo">0 glasses</p>
+        <button onclick="addWater()">+ Add Glass</button>
+        <button class="secondary" onclick="resetWater()">Reset</button>
+        <p class="muted">Hydration needs vary by person and activity.</p>
+      </div>`
+  },
+  {
+    icon:"📊",title:"Daily Progress",
+    content:`
+      <h3>Example daily check-in</h3>
+      <div class="card">
+        <p>🥗 Followed meal plan: Yes</p>
+        <p>🏃 Movement goal: Completed</p>
+        <p>💧 Hydration goal: Met</p>
+        <p>📝 Check-in: Completed</p>
+        <h3>Today's Score: 90 / 100</h3>
+        <p>Celebrate consistent habits rather than rapid weight loss.</p>
+      </div>`
+  },
+  {
+    icon:"🤝",title:"Buddy Challenges",
+    content:`
+      <h3>Build your own wellness team</h3>
+      <p>1. Create an account</p>
+      <p>2. Create a team and get an invite code</p>
+      <p>3. Invite your friends to join themselves</p>
+      <p>4. Share a 30-day diet plan</p>
+      <p>5. Track daily habits and earn points</p>
+      <p>6. Celebrate progress together</p>
+      <button onclick="showDemo()">See Example Team Leaderboard</button>`
+  }
+];
+
+function escapeHTML(value){
+  return String(value??"").replace(/[&<>"']/g,c=>({
+    "&":"&amp;","<":"&lt;",">":"&gt;",
+    '"':"&quot;","'":"&#39;"
+  }[c]));
+}
+
+function showSection(id){
+  ["home","featurePage","demo","dashboard"].forEach(x=>
+    $(x).classList.toggle("hidden",x!==id));
+  window.scrollTo(0,0);
+}
+
+window.showHome=()=>showSection("home");
+window.showDemo=()=>showSection("demo");
+
+window.openFeature=i=>{
+  const f=featureData[i];
+  $("featureTitle").textContent=f.icon+" "+f.title;
+  $("featureContent").innerHTML=f.content;
+  showSection("featurePage");
+};
+
+$("features").innerHTML=featureData.map((f,i)=>`
+  <div class="card feature" onclick="openFeature(${i})">
+    <h3>${f.icon} ${f.title}</h3>
+    <p>Explore examples, practical tips and progress ideas.</p>
+    <strong style="color:#176b4d">Explore examples →</strong>
+  </div>`).join("");
+
+$("demoLeaderboard").innerHTML=sampleMembers.map(([name,points],i)=>`
+  <div class="member">
+    <div style="flex:1">
+      <strong>${["🥇","🥈","🥉"][i]||"#"+(i+1)} ${name}</strong>
+      <div class="bar">
+        <div class="fill" style="width:${points/700*100}%"></div>
+      </div>
+    </div>
+    <strong>${points} pts</strong>
+  </div>`).join("");
+
+$("pointsExplanation").innerHTML=tasks.map(t=>`
+  <div class="member">
+    <span>${t.label}</span>
+    <strong>+${t.points}</strong>
+  </div>`).join("");
+
+$("taskChecks").innerHTML=tasks.map(t=>`
+  <label class="check">
+    <input type="checkbox" id="task_${t.id}" onchange="updatePoints()">
+    ${t.label} (+${t.points})
+  </label>`).join("");
+
+let waterDemoCount=0;
+window.addWater=()=>{
+  waterDemoCount++;
+  $("waterDemo").textContent=waterDemoCount+" glasses";
+};
+window.resetWater=()=>{
+  waterDemoCount=0;
+  $("waterDemo").textContent="0 glasses";
+};
+
+window.calculateBMI=()=>{
+  const h=Number($("bmiHeight").value)/100;
+  const w=Number($("bmiWeight").value);
+  if(h<=0||w<=0){
+    $("bmiResult").textContent="Enter valid height and weight.";
+    return;
+  }
+  const bmi=w/(h*h);
+  const category=bmi<18.5?"Underweight":
+    bmi<25?"Healthy BMI range":
+    bmi<30?"Overweight":"Obesity range";
+  $("bmiResult").textContent=
+    `BMI: ${bmi.toFixed(1)} (${category}). `+
+    `Standard adult BMI-range weight: `+
+    `${(18.5*h*h).toFixed(1)}–${(24.9*h*h).toFixed(1)} kg. `+
+    `BMI is only a screening tool.`;
+};
+
+window.openLogin=()=>{$("authDialog").showModal()};
+window.closeLogin=()=>{$("authDialog").close()};
+
+window.signUp=async()=>{
+  try{
+    const email=$("authEmail").value.trim();
+    const password=$("authPassword").value;
+    const name=$("authName").value.trim();
+    if(!name)throw Error("Please enter your name.");
+    const result=await createUserWithEmailAndPassword(auth,email,password);
+    await updateProfile(result.user,{displayName:name});
+    await setDoc(doc(db,"users",result.user.uid),{
+      name,email,createdAt:serverTimestamp()
     });
+    closeLogin();
+    showDashboard();
+  }catch(e){$("authMessage").textContent=e.message}
+};
 
-    document.addEventListener("keydown", event => {
-      if (event.key === "Escape") hideLogin();
+window.signIn=async()=>{
+  try{
+    await signInWithEmailAndPassword(
+      auth,$("authEmail").value.trim(),
+      $("authPassword").value
+    );
+    closeLogin();
+    showDashboard();
+  }catch(e){$("authMessage").textContent=e.message}
+};
+
+window.logout=async()=>{
+  await signOut(auth);
+  myTeams=[];
+  showHome();
+};
+
+onAuthStateChanged(auth,async user=>{
+  currentUser=user;
+  $("loginBtn").classList.toggle("hidden",!!user);
+  $("dashboardBtn").classList.toggle("hidden",!user);
+  $("logoutBtn").classList.toggle("hidden",!user);
+  if(user){
+    $("welcomeName").textContent=user.displayName||"Buddy";
+    $("accountEmail").textContent=user.email;
+    try{await refreshTeams()}catch(e){showMessage(e.message,true)}
+  }else if(!$("dashboard").classList.contains("hidden")){
+    showHome();
+  }
+});
+
+window.showDashboard=async()=>{
+  if(!currentUser){openLogin();return}
+  showSection("dashboard");
+  switchTab("teams");
+  await refreshTeams();
+};
+
+window.switchTab=tab=>{
+  ["teams","checkin","ranking","plan"].forEach(x=>{
+    $(x+"Tab").classList.toggle("hidden",x!==tab);
+    $("tab"+x[0].toUpperCase()+x.slice(1))
+      .classList.toggle("active",x===tab);
+  });
+  if(tab==="ranking")loadLeaderboard();
+  if(tab==="plan")loadPlan();
+  if(tab==="checkin")loadCheckin();
+};
+
+function showMessage(message,isError=false){
+  $("dashboardMessage").textContent=message;
+  $("dashboardMessage").className=isError?"error":"success";
+}
+
+function randomCode(){
+  const bytes=new Uint8Array(12);
+  crypto.getRandomValues(bytes);
+  return Array.from(bytes,b=>b.toString(16).padStart(2,"0")).join("");
+}
+
+window.createTeam=async()=>{
+  if(!currentUser)return;
+  const name=$("newTeamName").value.trim();
+  const duration=Number($("teamDuration").value);
+  if(!name||duration<1||duration>365){
+    showMessage("Enter a team name and valid duration.",true);
+    return;
+  }
+  try{
+    const teamRef=doc(collection(db,"teams"));
+    const inviteCode=randomCode();
+    await setDoc(teamRef,{
+      name,owner:currentUser.uid,
+      duration,inviteCode,
+      createdAt:serverTimestamp(),
+      plan:defaultPlan
     });
+    await setDoc(doc(db,"teams",teamRef.id,"members",currentUser.uid),{
+      uid:currentUser.uid,
+      name:currentUser.displayName||currentUser.email,
+      joinedAt:serverTimestamp()
+    });
+    $("newTeamName").value="";
+    await refreshTeams();
+    showMessage("Team created! Share the invite code privately.");
+  }catch(e){showMessage(e.message,true)}
+};
 
-    $("loginForm").onsubmit = async event => {
-      event.preventDefault();
+window.joinTeam=async()=>{
+  if(!currentUser)return;
+  const code=$("joinCode").value.trim().toLowerCase();
+  if(!code)return showMessage("Enter an invite code.",true);
+  try{
+    const result=await getDocs(
+      query(collection(db,"teams"),where("inviteCode","==",code))
+    );
+    if(result.empty)throw Error("Invite code not found.");
+    const team=result.docs[0];
+    await setDoc(doc(db,"teams",team.id,"members",currentUser.uid),{
+      uid:currentUser.uid,
+      name:currentUser.displayName||currentUser.email,
+      joinedAt:serverTimestamp()
+    });
+    $("joinCode").value="";
+    await refreshTeams();
+    showMessage("Successfully joined "+team.data().name+"!");
+  }catch(e){showMessage(e.message,true)}
+};
 
-      const email = $("email").value.trim();
-      const password = $("password").value;
+async function refreshTeams(){
+  if(!currentUser)return;
+  const snap=await getDocs(collection(db,"teams"));
+  const teams=[];
+  for(const d of snap.docs){
+    const member=await getDoc(
+      doc(db,"teams",d.id,"members",currentUser.uid)
+    );
+    if(member.exists())teams.push({id:d.id,...d.data()});
+  }
+  myTeams=teams;
+  $("teamCount").textContent=teams.length;
 
-      $("submitLogin").disabled = true;
-      $("loginError").textContent = "";
+  $("teamList").innerHTML=teams.length?
+    teams.map(t=>`
+      <div class="card" style="margin-bottom:12px">
+        <h3>${escapeHTML(t.name)}</h3>
+        <p>${t.duration} day challenge</p>
+        <p>Invite Code:
+          <strong>${escapeHTML(t.inviteCode)}</strong>
+        </p>
+        <span class="pill">
+          ${t.owner===currentUser.uid?"Team Creator":"Member"}
+        </span>
+      </div>`).join(""):
+    '<p class="muted">No teams yet. Create or join one above.</p>';
 
-      try {
-        const result = await signInWithEmailAndPassword(
-          auth, email, password
-        );
+  const options=teams.map(t=>
+    `<option value="${t.id}">${escapeHTML(t.name)}</option>`
+  ).join("");
 
-        if (!MEMBERS[result.user.uid]) {
-          await signOut(auth);
-          throw new Error(
-            "This account is not an invited member."
-          );
-        }
+  ["checkinTeam","rankingTeam","planTeam"].forEach(id=>{
+    const old=$(id).value;
+    $(id).innerHTML=options;
+    if(teams.some(t=>t.id===old))$(id).value=old;
+  });
 
-        $("password").value = "";
-        hideLogin();
+  await updateMyStats();
+}
 
-      } catch (error) {
-        $("loginError").textContent =
-          error.code === "auth/invalid-credential"
-            ? "Incorrect email or password."
-            : error.message;
-      } finally {
-        $("submitLogin").disabled = false;
-      }
-    };
+function calculatePoints(data){
+  return tasks.reduce((sum,t)=>
+    sum+(data[t.id]?t.points:0),0);
+}
 
-    $("logoutButton").onclick = async () => {
-      await signOut(auth);
-    };
+window.updatePoints=()=>{
+  const data={};
+  tasks.forEach(t=>{
+    data[t.id]=$("task_"+t.id).checked;
+  });
+  $("todayPoints").textContent=calculatePoints(data)+" / 100";
+};
 
-    // CHECK-IN FORM
+function todayLocal(){
+  const d=new Date();
+  return [
+    d.getFullYear(),
+    String(d.getMonth()+1).padStart(2,"0"),
+    String(d.getDate()).padStart(2,"0")
+  ].join("-");
+}
 
-    const textFields = [
-      "weight",
-      "targetWeight",
-      "water",
-      "breakfast",
-      "lunch",
-      "dinner",
-      "snacks",
-      "exercise",
-      "feeling",
-      "notes"
-    ];
+$("checkinDate").value=todayLocal();
 
-    const checkboxFields = [
-      "noAlcohol",
-      "mealPlan",
-      "workoutDone"
-    ];
+async function loadCheckin(){
+  if(!currentUser)return;
+  const teamId=$("checkinTeam").value;
+  const date=$("checkinDate").value;
+  if(!teamId||!date)return;
+  try{
+    const snap=await getDoc(
+      doc(db,"teams",teamId,"checkins",
+        currentUser.uid+"_"+date)
+    );
+    const data=snap.exists()?snap.data():{};
+    $("checkinWeight").value=data.weight??"";
+    $("checkinMeals").value=data.meals??"";
+    $("checkinWater").value=data.water??0;
+    tasks.forEach(t=>{
+      $("task_"+t.id).checked=!!data[t.id];
+    });
+    updatePoints();
+  }catch(e){showMessage(e.message,true)}
+}
 
-    function clearForm() {
-      textFields.forEach(id => {
-        $(id).value = "";
-      });
+$("checkinDate").addEventListener("change",loadCheckin);
+$("checkinTeam").addEventListener("change",loadCheckin);
 
-      checkboxFields.forEach(id => {
-        $(id).checked = false;
-      });
-    }
+window.saveCheckin=async()=>{
+  if(!currentUser)return;
+  const teamId=$("checkinTeam").value;
+  const date=$("checkinDate").value;
+  if(!teamId||!date)return showMessage("Select a team and date.",true);
 
-    function loadSelectedDate() {
-      if (!currentUser) return;
+  const data={
+    uid:currentUser.uid,
+    name:currentUser.displayName||currentUser.email,
+    date,
+    weight:$("checkinWeight").value?
+      Number($("checkinWeight").value):null,
+    meals:$("checkinMeals").value.trim(),
+    water:Number($("checkinWater").value)||0
+  };
+  tasks.forEach(t=>{
+    data[t.id]=$("task_"+t.id).checked;
+  });
+  data.checkedIn=true;
+  data.points=calculatePoints(data);
+  data.updatedAt=serverTimestamp();
 
-      clearForm();
+  try{
+    await setDoc(
+      doc(db,"teams",teamId,"checkins",
+        currentUser.uid+"_"+date),
+      data
+    );
+    $("task_checkedIn").checked=true;
+    updatePoints();
+    showMessage("Progress saved! You earned "+data.points+" points.");
+    await updateMyStats();
+  }catch(e){showMessage(e.message,true)}
+};
 
-      const record = checkins.find(item =>
-        item.owner === currentUser.uid &&
-        item.date === $("checkinDate").value
-      );
+async function getTeamCheckins(teamId){
+  const snap=await getDocs(
+    collection(db,"teams",teamId,"checkins")
+  );
+  return snap.docs.map(d=>d.data());
+}
 
-      if (!record) {
-        $("saveStatus").textContent = "";
-        return;
-      }
+async function updateMyStats(){
+  let points=0,count=0;
+  for(const team of myTeams){
+    const entries=await getTeamCheckins(team.id);
+    entries.filter(x=>x.uid===currentUser.uid).forEach(x=>{
+      points+=calculatePoints(x);
+      count++;
+    });
+  }
+  $("myPoints").textContent=points;
+  $("myCheckins").textContent=count;
+}
 
-      textFields.forEach(id => {
-        if (
-          record[id] !== undefined &&
-          record[id] !== null
-        ) {
-          $(id).value = record[id];
-        }
-      });
+window.loadLeaderboard=async()=>{
+  const teamId=$("rankingTeam").value;
+  if(!teamId)return;
+  $("liveLeaderboard").textContent="Loading leaderboard...";
+  try{
+    const memberSnap=await getDocs(
+      collection(db,"teams",teamId,"members")
+    );
+    const entries=await getTeamCheckins(teamId);
+    const scores={};
 
-      checkboxFields.forEach(id => {
-        $(id).checked = !!record[id];
-      });
-
-      $("saveStatus").textContent =
-        "Saved entry loaded for this date.";
-    }
-
-    $("checkinDate").onchange = loadSelectedDate;
-
-    $("saveCheckin").onclick = async () => {
-      if (!currentUser) return;
-
-      const date = $("checkinDate").value;
-
-      if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) {
-        $("saveStatus").textContent =
-          "Please choose a valid date.";
-        return;
-      }
-
-      const record = {
-        owner: currentUser.uid,
-        person: MEMBERS[currentUser.uid],
-        date,
-        updatedAt: serverTimestamp()
+    memberSnap.docs.forEach(d=>{
+      scores[d.id]={
+        name:d.data().name||"Buddy",
+        points:0,days:0
       };
-
-      const numericFields = [
-        "weight",
-        "targetWeight",
-        "water",
-        "exercise"
-      ];
-
-      textFields.forEach(id => {
-        const value = $(id).value.trim();
-
-        record[id] = numericFields.includes(id)
-          ? (value === "" ? null : Number(value))
-          : value;
-      });
-
-      checkboxFields.forEach(id => {
-        record[id] = $(id).checked;
-      });
-
-      $("saveCheckin").disabled = true;
-      $("saveStatus").textContent = "Saving...";
-
-      try {
-        await setDoc(
-          doc(db, "checkins", currentUser.uid + "_" + date),
-          record
-        );
-
-        $("saveStatus").textContent =
-          "✓ Check-in saved successfully!";
-
-      } catch (error) {
-        $("saveStatus").textContent =
-          "Save failed: " + error.message;
-      } finally {
-        $("saveCheckin").disabled = false;
-      }
-    };
-
-    // DASHBOARD
-
-    function displayValue(value) {
-      return value === undefined ||
-        value === null ||
-        value === ""
-          ? "—"
-          : String(value);
-    }
-
-    function renderDashboard() {
-      if (!currentUser) return;
-
-      const mine = checkins
-        .filter(item =>
-          item.owner === currentUser.uid
-        )
-        .sort((a, b) =>
-          b.date.localeCompare(a.date)
-        );
-
-      $("myDays").textContent = mine.length;
-      $("totalEntries").textContent = checkins.length;
-
-      const latestWeightEntry = mine.find(item =>
-        item.weight !== null &&
-        item.weight !== undefined &&
-        item.weight !== ""
-      );
-
-      $("latestWeight").textContent =
-        latestWeightEntry
-          ? displayValue(latestWeightEntry.weight)
-          : "—";
-
-      // PERSONAL HISTORY
-
-      $("history").replaceChildren();
-
-      if (mine.length === 0) {
-        $("history").textContent =
-          "No check-ins yet. Start today!";
-      }
-
-      mine.slice(0, 10).forEach(item => {
-        const div = document.createElement("div");
-        div.className = "history-item";
-
-        const title = document.createElement("strong");
-        title.textContent = item.date;
-
-        const details = document.createElement("span");
-        details.textContent =
-          "Weight: " + displayValue(item.weight) +
-          " kg · Water: " + displayValue(item.water) +
-          " glasses · Exercise: " +
-          displayValue(item.exercise) + " min";
-
-        div.append(title, details);
-        div.style.cursor = "pointer";
-
-        div.onclick = () => {
-          $("checkinDate").value = item.date;
-          loadSelectedDate();
-
-          window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-          });
-        };
-
-        $("history").appendChild(div);
-      });
-
-      // BUDDY PROGRESS
-
-      $("buddyActivity").replaceChildren();
-
-      Object.entries(MEMBERS).forEach(
-        ([uid, name]) => {
-
-          const entries = checkins
-            .filter(item => item.owner === uid)
-            .sort((a, b) =>
-              b.date.localeCompare(a.date)
-            );
-
-          const div = document.createElement("div");
-          div.className = "history-item";
-
-          const title = document.createElement("strong");
-          title.textContent =
-            name + " · " + entries.length + " check-ins";
-
-          const detail = document.createElement("span");
-
-          detail.textContent = entries.length
-            ? "Latest: " + entries[0].date
-            : "No entries yet";
-
-          div.append(title, detail);
-          $("buddyActivity").appendChild(div);
-        }
-      );
-
-      // 30-DAY CHALLENGE
-
-      const start = new Date("2026-11-02T12:00:00");
-      const now = new Date(localToday() + "T12:00:00");
-
-      const elapsed = Math.floor(
-        (now - start) / 86400000
-      );
-
-      const day = Math.max(
-        1,
-        Math.min(30, elapsed + 1)
-      );
-
-      $("challengeProgress").style.width =
-        (day / 30 * 100) + "%";
-
-      $("challengeDay").textContent =
-        "Day " + day + " of 30";
-
-      loadSelectedDate();
-    }
-
-    // AUTH AND FIRESTORE SYNC
-
-    onAuthStateChanged(auth, async user => {
-
-      if (unsubscribe) {
-        unsubscribe();
-        unsubscribe = null;
-      }
-
-      if (user && !MEMBERS[user.uid]) {
-        currentUser = null;
-        await signOut(auth);
-        return;
-      }
-
-      currentUser = user;
-
-      $("landing").classList.toggle(
-        "hidden", !!user
-      );
-
-      $("dashboard").classList.toggle(
-        "hidden", !user
-      );
-
-      $("loginButton").classList.toggle(
-        "hidden", !!user
-      );
-
-      $("logoutButton").classList.toggle(
-        "hidden", !user
-      );
-
-      if (!user) {
-        checkins = [];
-        return;
-      }
-
-      hideLogin();
-
-      $("welcome").textContent =
-        "Hello, " + MEMBERS[user.uid] + " 👋";
-
-      unsubscribe = onSnapshot(
-        collection(db, "checkins"),
-
-        snapshot => {
-          checkins = snapshot.docs
-            .map(item => item.data())
-            .filter(item => MEMBERS[item.owner]);
-
-          renderDashboard();
-        },
-
-        error => {
-          $("saveStatus").textContent =
-            "Unable to load check-ins: " +
-            error.message;
-        }
-      );
     });
 
-  </script>
+    entries.forEach(entry=>{
+      if(!scores[entry.uid])return;
+      scores[entry.uid].points+=calculatePoints(entry);
+      scores[entry.uid].days++;
+    });
 
+    const ranking=Object.values(scores)
+      .sort((a,b)=>b.points-a.points);
+
+    $("liveLeaderboard").innerHTML=ranking.map((m,i)=>`
+      <div class="member">
+        <div>
+          <strong>${["🥇","🥈","🥉"][i]||"#"+(i+1)}
+          ${escapeHTML(m.name)}</strong>
+          <p class="muted" style="margin:4px 0">
+            ${m.days} daily check-ins
+          </p>
+        </div>
+        <strong>${m.points} pts</strong>
+      </div>`).join("")||"<p>No members yet.</p>";
+  }catch(e){
+    $("liveLeaderboard").textContent=e.message;
+  }
+};
+
+window.loadPlan=async()=>{
+  const teamId=$("planTeam").value;
+  const team=myTeams.find(t=>t.id===teamId);
+  if(!team)return;
+  try{
+    const snap=await getDoc(doc(db,"teams",teamId));
+    $("planText").value=snap.data()?.plan||defaultPlan;
+    const isOwner=team.owner===currentUser.uid;
+    $("planText").readOnly=!isOwner;
+    $("savePlanBtn").disabled=!isOwner;
+  }catch(e){showMessage(e.message,true)}
+};
+
+window.savePlan=async()=>{
+  const teamId=$("planTeam").value;
+  const team=myTeams.find(t=>t.id===teamId);
+  if(!team||team.owner!==currentUser.uid)return;
+  try{
+    const ref=doc(db,"teams",teamId);
+    await setDoc(ref,{plan:$("planText").value},{merge:true});
+    showMessage("Team diet plan saved.");
+  }catch(e){showMessage(e.message,true)}
+};
+</script>
 </body>
 </html>
