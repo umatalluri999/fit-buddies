@@ -5,10 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#123d2e">
-
-  <title>Fitarya | Your Health. Your Progress.</title>
-  <meta name="description"
-    content="Fitarya is your personal wellness space for diet plans, fitness, daily habits and progress tracking.">
+  <meta name="description" content="Fitarya — Your Health. Your Progress. Inspired by Anthem Bros Group. Track meals, fitness, habits and daily wellness.">
+  <title>Fitarya | Inspired by Anthem Bros Group</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,11 +20,10 @@
       --lime: #d9f1b5;
       --muted: #68776e;
       --border: #dfe8dd;
-      --white: #ffffff;
+      --white: #fff;
     }
 
     * { box-sizing: border-box; }
-
     html { scroll-behavior: smooth; }
 
     body {
@@ -36,27 +33,16 @@
       font-family: "DM Sans", sans-serif;
     }
 
-    h1, h2, h3 {
-      font-family: "Outfit", sans-serif;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    button, input, textarea, select {
-      font: inherit;
-    }
-
+    h1, h2, h3 { font-family: "Outfit", sans-serif; }
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea, select { font: inherit; }
     button { cursor: pointer; }
+    .hidden { display: none !important; }
 
     .container {
       width: min(1150px, calc(100% - 36px));
       margin: auto;
     }
-
-    .hidden { display: none !important; }
 
     .btn {
       border: none;
@@ -65,17 +51,12 @@
       font-weight: 700;
       display: inline-block;
       text-align: center;
-      transition: 0.2s;
+      transition: .2s;
     }
 
-    .btn:hover {
-      transform: translateY(-2px);
-    }
-
-    .primary {
-      background: var(--green);
-      color: white;
-    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn:disabled { opacity: .55; cursor: wait; }
+    .primary { background: var(--green); color: white; }
 
     .outline {
       background: transparent;
@@ -83,22 +64,23 @@
       color: var(--dark);
     }
 
-    .white-btn {
-      background: white;
-      color: var(--dark);
-    }
-
-    /* NAVIGATION */
+    /* HEADER */
 
     header {
-      padding: 20px 0;
+      background: #ffffffd9;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(12px);
     }
 
     .nav {
+      min-height: 78px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 16px;
+      gap: 15px;
     }
 
     .logo {
@@ -108,14 +90,12 @@
       letter-spacing: -1.5px;
     }
 
-    .logo span {
-      color: #84b758;
-    }
+    .logo span { color: #84b758; }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 24px;
+      gap: 22px;
       font-size: 14px;
       font-weight: 700;
     }
@@ -125,10 +105,10 @@
     .hero {
       min-height: 620px;
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
+      grid-template-columns: 1.1fr .9fr;
       align-items: center;
       gap: 50px;
-      padding: 55px 0 90px;
+      padding: 65px 0 90px;
     }
 
     .eyebrow {
@@ -167,6 +147,40 @@
       gap: 12px;
       flex-wrap: wrap;
       margin-top: 30px;
+    }
+
+    /* ANTHEM BROS CAPTION */
+
+    .inspired-caption {
+      margin-top: 30px;
+      padding: 17px 24px;
+      display: inline-block;
+      background: #e8f3dd;
+      border: 1px solid #d0e5c5;
+      border-radius: 18px;
+      text-align: center;
+    }
+
+    .inspired-caption span {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .inspired-caption strong {
+      display: block;
+      color: var(--green);
+      font-size: 19px;
+      margin-top: 5px;
+      font-family: "Outfit", sans-serif;
+    }
+
+    .inspired-caption p {
+      font-size: 12px;
+      margin: 6px 0 0;
+      color: var(--muted);
+      letter-spacing: .5px;
+      line-height: 1.5;
     }
 
     .hero-art {
@@ -213,21 +227,12 @@
       font-weight: 400;
     }
 
-    .float1 {
-      top: 45px;
-      left: 18px;
-    }
-
-    .float2 {
-      right: 15px;
-      bottom: 45px;
-    }
+    .float1 { top: 45px; left: 18px; }
+    .float2 { right: 15px; bottom: 45px; }
 
     /* SECTIONS */
 
-    section.content {
-      padding: 70px 0;
-    }
+    section.content { padding: 70px 0; }
 
     .section-title {
       text-align: center;
@@ -359,14 +364,27 @@
     }
 
     footer {
-      padding: 35px 0;
+      padding: 40px 0;
       border-top: 1px solid var(--border);
       color: var(--muted);
       font-size: 13px;
       text-align: center;
+      line-height: 1.8;
     }
 
-    /* LOGIN MODAL */
+    .footer-brand {
+      color: var(--dark);
+      font-family: "Outfit", sans-serif;
+      font-size: 23px;
+      font-weight: 800;
+    }
+
+    .footer-anthem {
+      color: var(--green);
+      font-weight: 700;
+    }
+
+    /* LOGIN */
 
     .modal-backdrop {
       position: fixed;
@@ -441,18 +459,14 @@
 
     /* DASHBOARD */
 
-    .dashboard {
-      padding: 30px 0 80px;
-    }
+    .dashboard { padding: 30px 0 80px; }
 
     .dashboard h1 {
       font-size: 42px;
       margin-bottom: 5px;
     }
 
-    .dashboard-subtitle {
-      color: var(--muted);
-    }
+    .dashboard-subtitle { color: var(--muted); }
 
     .stats {
       display: grid;
@@ -479,7 +493,7 @@
 
     .dashboard-grid {
       display: grid;
-      grid-template-columns: 1.3fr 0.7fr;
+      grid-template-columns: 1.3fr .7fr;
       gap: 20px;
     }
 
@@ -502,9 +516,7 @@
       gap: 15px;
     }
 
-    .full {
-      grid-column: 1 / -1;
-    }
+    .full { grid-column: 1 / -1; }
 
     .checkboxes {
       display: flex;
@@ -519,9 +531,7 @@
       font-size: 13px;
     }
 
-    .checkboxes input {
-      accent-color: var(--green);
-    }
+    .checkboxes input { accent-color: var(--green); }
 
     .history-item {
       border: 1px solid var(--border);
@@ -536,9 +546,7 @@
       margin-bottom: 6px;
     }
 
-    .history-item span {
-      color: var(--muted);
-    }
+    .history-item span { color: var(--muted); }
 
     .challenge-box {
       background: #e9f4df;
@@ -569,30 +577,18 @@
     }
 
     @media (max-width: 850px) {
-      .hero,
-      .team-section,
-      .dashboard-grid {
+      .hero, .team-section, .dashboard-grid {
         grid-template-columns: 1fr;
       }
 
-      .features {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
+      .features { grid-template-columns: repeat(2, 1fr); }
       .hero-art { min-height: 350px; }
-
       .nav-links a { display: none; }
     }
 
     @media (max-width: 570px) {
-      .features,
-      .form-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .hero h1 {
-        letter-spacing: -2px;
-      }
+      .features, .form-grid { grid-template-columns: 1fr; }
+      .hero h1 { letter-spacing: -2px; }
 
       .hero-circle {
         width: 210px;
@@ -600,33 +596,13 @@
         font-size: 85px;
       }
 
-      .team-section {
-        padding: 30px 20px;
-      }
-
-      .team-members {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .stats {
-        gap: 8px;
-      }
-
-      .stat {
-        padding: 13px;
-      }
-
-      .stat strong {
-        font-size: 23px;
-      }
-
-      .panel {
-        padding: 20px;
-      }
-
-      .full {
-        grid-column: auto;
-      }
+      .team-section { padding: 30px 20px; }
+      .team-members { grid-template-columns: 1fr 1fr; }
+      .stats { gap: 8px; }
+      .stat { padding: 13px; }
+      .stat strong { font-size: 23px; }
+      .panel { padding: 20px; }
+      .full { grid-column: auto; }
     }
   </style>
 </head>
@@ -651,16 +627,14 @@
           Member Login
         </button>
 
-        <button id="logoutButton"
-          class="btn outline hidden">
+        <button id="logoutButton" class="btn outline hidden">
           Log Out
         </button>
       </nav>
-
     </div>
   </header>
 
-  <!-- PUBLIC HOMEPAGE -->
+  <!-- HOMEPAGE -->
 
   <main id="landing">
 
@@ -695,16 +669,17 @@
           </a>
         </div>
 
-        <p style="font-size:13px;margin-top:25px">
-          🌱 Started with friends. Built for better days.
-        </p>
+        <!-- ANTHEM BROS CREDIT -->
+
+        <div class="inspired-caption">
+          <span>🤝 Inspired by</span>
+          <strong>Anthem Bros Group</strong>
+          <p>Brotherhood • Wellness • Progress</p>
+        </div>
       </div>
 
       <div class="hero-art">
-
-        <div class="hero-circle">
-          🥑
-        </div>
+        <div class="hero-circle">🥑</div>
 
         <div class="floating float1">
           🌿 Healthy habits
@@ -715,7 +690,6 @@
           💚 Daily progress
           <small>Food · Water · Movement</small>
         </div>
-
       </div>
 
     </section>
@@ -762,8 +736,8 @@
           <div class="card-icon">🏃</div>
           <h3>Fitness & Movement</h3>
           <p>
-            Log exercise time, stay active and
-            build a consistent movement routine.
+            Log exercise time and build
+            a consistent movement routine.
           </p>
         </article>
 
@@ -789,8 +763,8 @@
           <div class="card-icon">🤝</div>
           <h3>Buddy Challenges</h3>
           <p>
-            Stay accountable with friends,
-            encourage each other and celebrate wins.
+            Stay accountable with friends
+            and celebrate achievements together.
           </p>
         </article>
 
@@ -819,7 +793,9 @@
           </p>
 
           <p>
-            We're building better habits together,
+            Inspired by the spirit of
+            <strong>Anthem Bros Group</strong>,
+            we're building better habits together,
             one day at a time.
           </p>
         </div>
@@ -839,9 +815,7 @@
           </div>
 
         </div>
-
       </div>
-
     </section>
 
     <!-- MISSION -->
@@ -851,9 +825,7 @@
       <div class="section-title">
         <span class="eyebrow">Our philosophy</span>
 
-        <h2>
-          Progress over perfection.
-        </h2>
+        <h2>Progress over perfection.</h2>
 
         <p>
           Being healthy isn't about one perfect
@@ -862,6 +834,13 @@
           maintain and improving a little
           every day.
         </p>
+
+        <p>
+          <strong>
+            Inspired by Anthem Bros Group —
+            united by friendship, driven by progress.
+          </strong>
+        </p>
       </div>
 
     </section>
@@ -869,7 +848,6 @@
     <!-- CALL TO ACTION -->
 
     <section class="container">
-
       <div class="cta">
 
         <h2>Ready for a healthier chapter?</h2>
@@ -888,12 +866,11 @@
         </p>
 
       </div>
-
     </section>
 
   </main>
 
-  <!-- PRIVATE DASHBOARD -->
+  <!-- PRIVATE MEMBER DASHBOARD -->
 
   <main id="dashboard" class="hidden">
 
@@ -927,10 +904,7 @@
 
       <div class="dashboard-grid">
 
-        <!-- DAILY CHECK-IN -->
-
         <div>
-
           <div class="panel">
 
             <h2>🌿 Daily Health Check-in</h2>
@@ -944,30 +918,22 @@
 
               <label class="field">
                 Current Weight (kg)
-                <input type="number"
-                  id="weight"
-                  step="0.1"
-                  min="1"
-                  max="500"
+                <input type="number" id="weight"
+                  step="0.1" min="1" max="500"
                   placeholder="e.g. 92.5">
               </label>
 
               <label class="field">
                 Target Weight (kg)
-                <input type="number"
-                  id="targetWeight"
-                  step="0.1"
-                  min="1"
-                  max="500"
+                <input type="number" id="targetWeight"
+                  step="0.1" min="1" max="500"
                   placeholder="Your goal">
               </label>
 
               <label class="field">
                 Water (glasses)
-                <input type="number"
-                  id="water"
-                  min="0"
-                  max="50"
+                <input type="number" id="water"
+                  min="0" max="50"
                   placeholder="e.g. 8">
               </label>
 
@@ -997,10 +963,8 @@
 
               <label class="field">
                 Exercise (minutes)
-                <input type="number"
-                  id="exercise"
-                  min="0"
-                  max="1440"
+                <input type="number" id="exercise"
+                  min="0" max="1440"
                   placeholder="e.g. 30">
               </label>
 
@@ -1038,25 +1002,20 @@
               <label class="field full">
                 Notes / Health Observations
                 <textarea id="notes"
-                  placeholder="Sleep, mood, energy, health observations or today's achievements..."></textarea>
+                  placeholder="Sleep, mood, energy or today's achievements..."></textarea>
               </label>
 
             </div>
 
-            <button id="saveCheckin"
-              class="btn primary">
+            <button id="saveCheckin" class="btn primary">
               Save Today's Check-in ✓
             </button>
 
             <div id="saveStatus"
-              class="status"
-              role="status"></div>
+              class="status" role="status"></div>
 
           </div>
-
         </div>
-
-        <!-- SIDE PANEL -->
 
         <aside>
 
@@ -1068,26 +1027,20 @@
 
               <strong>30 Days of Progress</strong>
 
-              <p>
-                November 2 – December 1, 2026
-              </p>
+              <p>November 2 – December 1, 2026</p>
 
               <div class="progress-track">
                 <div id="challengeProgress"
                   class="progress-fill"></div>
               </div>
 
-              <p id="challengeDay">
-                Day 1 of 30
-              </p>
+              <p id="challengeDay">Day 1 of 30</p>
 
             </div>
 
             <h2>👥 Buddy Progress</h2>
 
-            <div id="buddyActivity">
-              Loading...
-            </div>
+            <div id="buddyActivity">Loading...</div>
 
           </div>
 
@@ -1104,18 +1057,32 @@
         </aside>
 
       </div>
-
     </div>
-
   </main>
 
   <!-- FOOTER -->
 
   <footer>
-    © <span id="year"></span> Fitarya.
-    Your Health. Your Progress.
-    <br>
-    Built for better days 🌱
+    <div class="container">
+
+      <div class="footer-brand">✦ FITARYA</div>
+
+      <div>Your Health. Your Progress.</div>
+
+      <div class="footer-anthem">
+        🤝 Inspired by Anthem Bros Group
+      </div>
+
+      <div>
+        Brotherhood • Wellness • Progress
+      </div>
+
+      <div style="margin-top:14px">
+        © <span id="year"></span> Fitarya.
+        All rights reserved.
+      </div>
+
+    </div>
   </footer>
 
   <!-- LOGIN MODAL -->
@@ -1130,17 +1097,13 @@
 
       <button class="close"
         id="closeLogin"
-        aria-label="Close login">
-        ×
-      </button>
+        aria-label="Close login">×</button>
 
       <div class="logo">
         ✦ fitarya<span>.</span>
       </div>
 
-      <h2 id="loginTitle">
-        Welcome back 👋
-      </h2>
+      <h2 id="loginTitle">Welcome back 👋</h2>
 
       <p>
         Sign in to access your personal
@@ -1151,18 +1114,14 @@
 
         <label class="field">
           Email Address
-          <input type="email"
-            id="email"
-            autocomplete="username"
-            required>
+          <input type="email" id="email"
+            autocomplete="username" required>
         </label>
 
         <label class="field">
           Password
-          <input type="password"
-            id="password"
-            autocomplete="current-password"
-            required>
+          <input type="password" id="password"
+            autocomplete="current-password" required>
         </label>
 
         <button type="submit"
@@ -1173,8 +1132,7 @@
         </button>
 
         <div id="loginError"
-          class="error"
-          role="alert"></div>
+          class="error" role="alert"></div>
 
       </form>
 
@@ -1184,7 +1142,6 @@
       </p>
 
     </div>
-
   </div>
 
   <!-- FIREBASE -->
@@ -1210,8 +1167,6 @@
       onSnapshot,
       serverTimestamp
     } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
-
-    // Existing Fitarya Firebase project
 
     const firebaseConfig = {
       apiKey: "AIzaSyCzoHhKe-uC_LHXkJ4Oopzg3vRT2xk9IzI",
@@ -1252,7 +1207,7 @@
 
     $("checkinDate").value = localToday();
 
-    // LOGIN MODAL
+    // LOGIN
 
     function showLogin() {
       $("loginError").textContent = "";
@@ -1279,12 +1234,8 @@
     });
 
     document.addEventListener("keydown", event => {
-      if (event.key === "Escape") {
-        hideLogin();
-      }
+      if (event.key === "Escape") hideLogin();
     });
-
-    // LOGIN AUTHENTICATION
 
     $("loginForm").onsubmit = async event => {
       event.preventDefault();
@@ -1297,9 +1248,7 @@
 
       try {
         const result = await signInWithEmailAndPassword(
-          auth,
-          email,
-          password
+          auth, email, password
         );
 
         if (!MEMBERS[result.user.uid]) {
@@ -1326,7 +1275,7 @@
       await signOut(auth);
     };
 
-    // FORM FIELDS
+    // CHECK-IN FORM
 
     const textFields = [
       "weight",
@@ -1391,8 +1340,6 @@
 
     $("checkinDate").onchange = loadSelectedDate;
 
-    // SAVE DAILY CHECK-IN
-
     $("saveCheckin").onclick = async () => {
       if (!currentUser) return;
 
@@ -1407,7 +1354,7 @@
       const record = {
         owner: currentUser.uid,
         person: MEMBERS[currentUser.uid],
-        date: date,
+        date,
         updatedAt: serverTimestamp()
       };
 
@@ -1421,13 +1368,9 @@
       textFields.forEach(id => {
         const value = $(id).value.trim();
 
-        if (numericFields.includes(id)) {
-          record[id] = value === ""
-            ? null
-            : Number(value);
-        } else {
-          record[id] = value;
-        }
+        record[id] = numericFields.includes(id)
+          ? (value === "" ? null : Number(value))
+          : value;
       });
 
       checkboxFields.forEach(id => {
@@ -1439,11 +1382,7 @@
 
       try {
         await setDoc(
-          doc(
-            db,
-            "checkins",
-            currentUser.uid + "_" + date
-          ),
+          doc(db, "checkins", currentUser.uid + "_" + date),
           record
         );
 
@@ -1458,7 +1397,7 @@
       }
     };
 
-    // RENDER DASHBOARD
+    // DASHBOARD
 
     function displayValue(value) {
       return value === undefined ||
@@ -1493,7 +1432,7 @@
           ? displayValue(latestWeightEntry.weight)
           : "—";
 
-      // Personal history
+      // PERSONAL HISTORY
 
       $("history").replaceChildren();
 
@@ -1510,7 +1449,6 @@
         title.textContent = item.date;
 
         const details = document.createElement("span");
-
         details.textContent =
           "Weight: " + displayValue(item.weight) +
           " kg · Water: " + displayValue(item.water) +
@@ -1518,12 +1456,12 @@
           displayValue(item.exercise) + " min";
 
         div.append(title, details);
-
         div.style.cursor = "pointer";
 
         div.onclick = () => {
           $("checkinDate").value = item.date;
           loadSelectedDate();
+
           window.scrollTo({
             top: 0,
             behavior: "smooth"
@@ -1533,7 +1471,7 @@
         $("history").appendChild(div);
       });
 
-      // Buddy progress
+      // BUDDY PROGRESS
 
       $("buddyActivity").replaceChildren();
 
@@ -1564,7 +1502,7 @@
         }
       );
 
-      // Challenge timeline
+      // 30-DAY CHALLENGE
 
       const start = new Date("2026-11-02T12:00:00");
       const now = new Date(localToday() + "T12:00:00");
@@ -1587,7 +1525,7 @@
       loadSelectedDate();
     }
 
-    // AUTH STATE AND LIVE FIRESTORE SYNC
+    // AUTH AND FIRESTORE SYNC
 
     onAuthStateChanged(auth, async user => {
 
@@ -1605,23 +1543,19 @@
       currentUser = user;
 
       $("landing").classList.toggle(
-        "hidden",
-        !!user
+        "hidden", !!user
       );
 
       $("dashboard").classList.toggle(
-        "hidden",
-        !user
+        "hidden", !user
       );
 
       $("loginButton").classList.toggle(
-        "hidden",
-        !!user
+        "hidden", !!user
       );
 
       $("logoutButton").classList.toggle(
-        "hidden",
-        !user
+        "hidden", !user
       );
 
       if (!user) {
