@@ -3,850 +3,829 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Fitarya — grow healthier together through nutrition, fitness, wellness teams and daily progress.">
 <title>Fitarya | Grow Healthier Together</title>
 <style>
 :root{
-  --green:#176b4d;--light:#e9f6ed;--dark:#18372c;
-  --cream:#fafbf7;--line:#dce7df
+ --navy:#102c38;--green:#159b68;--mint:#e7f8ee;
+ --cream:#fafbf8;--ink:#17352d;--muted:#61766e;
+ --line:#dfebe3;--white:#fff
 }
 *{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:var(--cream);color:var(--dark)}
-header{background:white;border-bottom:1px solid var(--line);padding:16px 5%;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;position:sticky;top:0;z-index:5}
-.logo{font-size:26px;font-weight:800;color:var(--green)}
-nav{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-button,.btn{background:var(--green);color:white;border:0;padding:12px 17px;border-radius:10px;cursor:pointer;font-weight:600}
-button:hover{opacity:.9}
-button.secondary{background:var(--light);color:var(--green)}
-button:disabled{opacity:.5;cursor:not-allowed}
-.hero{padding:70px 6%;text-align:center;background:linear-gradient(140deg,#e5f5e9,#fdfcf5)}
-.hero h1{font-size:clamp(32px,6vw,60px);margin:15px 0}
-.hero p{max-width:720px;margin:14px auto;line-height:1.7}
-.tag{display:inline-block;background:#d5efdf;color:var(--green);border-radius:30px;padding:9px 16px;font-weight:700}
-section{padding:48px 5%;max-width:1250px;margin:auto}
-h2{font-size:30px;margin:0 0 12px}
-.muted{color:#60766b;line-height:1.6}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
-.card{background:white;border:1px solid var(--line);border-radius:17px;padding:22px;box-shadow:0 5px 20px #143d2010}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--cream);color:var(--ink)}
+header{background:var(--navy);color:white;display:flex;align-items:center;justify-content:space-between;padding:16px 5%;gap:12px;flex-wrap:wrap;position:sticky;top:0;z-index:10}
+.logo{font-size:27px;font-weight:800}
+.logo small{display:block;font-size:11px;font-weight:400;color:#b8d9ce}
+nav{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+nav a{color:white;text-decoration:none;font-size:14px}
+button,.btn{border:0;background:var(--green);color:white;padding:12px 18px;border-radius:12px;cursor:pointer;font-weight:700;font-size:14px;text-decoration:none;display:inline-block}
+button:hover,.btn:hover{filter:brightness(.94)}
+.secondary{background:#e6f4ec;color:#126845}
+.outline{background:transparent;border:1px solid #b9d2c5;color:inherit}
+.hero{background:linear-gradient(115deg,#102c38ee,#17694a99),url('https://images.unsplash.com/photo-1538805060514-97d9cc17730c?w=1600') center/cover;color:white;padding:90px 6%}
+.hero-inner{max-width:850px}
+.hero h1{font-size:clamp(37px,6vw,68px);line-height:1.1;margin:15px 0}
+.hero h1 span{color:#78f4a1}
+.hero p{font-size:18px;line-height:1.7;max-width:670px}
+.eyebrow{display:inline-block;background:#ffffff25;border:1px solid #ffffff55;border-radius:40px;padding:9px 15px;font-size:13px}
+section{padding:65px 5%;max-width:1280px;margin:auto}
+section h2{font-size:clamp(26px,3.5vw,38px);margin:0 0 12px}
+.muted{color:var(--muted);line-height:1.7}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.card{background:white;border:1px solid var(--line);border-radius:20px;padding:23px;box-shadow:0 8px 25px #153f2410}
 .card h3{margin-top:0}
-.card p{line-height:1.6}
-.feature{cursor:pointer;transition:transform .2s}
+.card p{line-height:1.65}
+.card .emoji{font-size:34px}
+.feature{transition:transform .2s}
 .feature:hover{transform:translateY(-4px)}
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px}
-.stat{background:var(--light);padding:20px;border-radius:14px;text-align:center}
-.stat strong{display:block;font-size:27px;color:var(--green)}
-input,select,textarea{width:100%;padding:12px;border:1px solid #cbd9cf;border-radius:9px;font:inherit;margin:6px 0 12px;background:white}
-label{font-size:14px;font-weight:600}
-textarea{min-height:75px}
-.hidden{display:none!important}
-.tabs{display:flex;gap:9px;flex-wrap:wrap;margin:18px 0}
-.tabs button{background:#e4eee6;color:var(--dark)}
-.tabs button.active{background:var(--green);color:white}
-.row{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
-.member{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}
-.bar{height:9px;background:#e4eee7;border-radius:20px;overflow:hidden;margin:7px 0}
-.fill{height:100%;background:#35a875;border-radius:20px}
-.check{display:flex;align-items:center;gap:10px;margin:10px 0}
+.tag{display:inline-block;background:var(--mint);color:#136b47;border-radius:25px;padding:7px 12px;font-size:12px;font-weight:700}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:14px;margin:20px 0}
+.stat{background:#e8f7ee;border-radius:15px;padding:20px;text-align:center}
+.stat strong{display:block;font-size:28px;color:#13734e;margin-bottom:6px}
+.stat span{font-size:13px;color:var(--muted)}
+.row{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.bar{height:9px;background:#e7eee8;border-radius:30px;overflow:hidden;margin:8px 0}
+.fill{height:100%;background:linear-gradient(90deg,#159b68,#73dca1)}
+.member{padding:12px 0;border-bottom:1px solid var(--line)}
+.member:last-child{border:0}
+input,select,textarea{display:block;width:100%;padding:12px;border:1px solid #cbded0;border-radius:10px;font:inherit;margin:7px 0 15px;background:white}
+label{font-size:14px;font-weight:700}
+textarea{min-height:85px}
+.check{display:flex;align-items:center;gap:10px;margin:12px 0}
 .check input{width:18px;height:18px;margin:0}
-.pill{display:inline-block;padding:6px 10px;background:var(--light);color:var(--green);border-radius:30px;font-size:12px;font-weight:700}
-.notice{padding:14px;background:#fff7e5;border-radius:10px;margin:12px 0;line-height:1.5}
-.error{color:#ae3131}
-.success{color:var(--green)}
-footer{text-align:center;background:#123b2b;color:white;padding:30px}
-dialog{border:0;border-radius:18px;padding:25px;max-width:430px;width:92%;box-shadow:0 15px 60px #0003}
-dialog::backdrop{background:#0008}
-@media(max-width:600px){header{position:static}.hero{padding:45px 5%}}
+.hidden{display:none!important}
+.notice{background:#fff5dd;padding:16px;border-radius:12px;line-height:1.6}
+.success{color:#13734e}
+.small{font-size:12px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.photo{width:100%;height:220px;object-fit:cover;border-radius:16px}
+footer{background:#102c38;color:white;text-align:center;padding:45px 5%}
+footer a{color:#b3f3d0;margin:0 10px}
+dialog{border:0;border-radius:20px;max-width:650px;width:94%;padding:28px;box-shadow:0 20px 80px #0004}
+dialog::backdrop{background:#0009}
+.tabs{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.tabs button{background:#e5f2e9;color:#175b42}
+.tabs button.active{background:var(--green);color:white}
+@media(max-width:700px){
+ header{position:static}
+ .hero{padding:60px 5%}
+ .two{grid-template-columns:1fr}
+ nav{gap:9px}
+}
 </style>
 </head>
 <body>
 
 <header>
-  <div class="logo">🌿 Fitarya</div>
-  <nav>
-    <button class="secondary" onclick="showHome()">Home</button>
-    <button class="secondary" onclick="showDemo()">Team Demo</button>
-    <button id="loginBtn" onclick="openLogin()">Login / Sign Up</button>
-    <button id="dashboardBtn" class="hidden" onclick="showDashboard()">My Dashboard</button>
-    <button id="logoutBtn" class="secondary hidden" onclick="logout()">Logout</button>
-  </nav>
+ <div class="logo">💚 Fitarya
+  <small>Your Wellness Buddy</small>
+ </div>
+ <nav>
+  <a href="#home">Home</a>
+  <a href="#features">Features</a>
+  <a href="#journey">30-Day Plan</a>
+  <a href="#teams">Teams</a>
+  <a href="#reports">Reports</a>
+  <button onclick="openJourney()">Start Your Journey 🚀</button>
+ </nav>
 </header>
 
-<div id="home">
-  <div class="hero">
-    <span class="tag">🤝 Inspired by Anthem Bros Group</span>
-    <h1>Grow healthier.<br>Together.</h1>
-    <p>
-      Fitarya brings nutrition, movement, hydration,
-      weight tracking and friendly team challenges
-      into one wellness journey.
-    </p>
-    <button onclick="openLogin()">Start Your Journey</button>
-    <button class="secondary" onclick="showDemo()">Explore Team Dashboard</button>
-    <p class="muted">Brotherhood • Wellness • Progress</p>
-  </div>
-
-  <section>
-    <h2>Everything you need to grow healthier</h2>
-    <p class="muted">Explore practical examples for every part of your journey.</p>
-    <div class="grid" id="features"></div>
-  </section>
-
-  <section>
-    <h2>Our 30-Day Wellness Journey</h2>
-    <div class="grid">
-      <div class="card">
-        <h3>🥤 Days 1–3</h3>
-        <p>Juice-focused introduction using Pressed Juicery drinks
-        alongside balanced food, protein and sufficient calories.</p>
-        <p class="muted">A juice-only cleanse is not necessary for detoxification.</p>
-      </div>
-      <div class="card">
-        <h3>🥗 Days 4–30</h3>
-        <p>Balanced Indian-inspired meals, daily movement,
-        hydration and sustainable habits.</p>
-      </div>
-      <div class="card">
-        <h3>🏆 Make It Fun</h3>
-        <p>Create a team, invite buddies, track habits,
-        earn points and celebrate consistency.</p>
-      </div>
-    </div>
-  </section>
+<div id="home" class="hero">
+ <div class="hero-inner">
+  <span class="eyebrow">🤝 Inspired by Anthem Bros Group</span>
+  <h1>Transform Your Health <span>Together.</span></h1>
+  <p>
+   Your wellness journey is easier with friends.
+   Build your team, set realistic goals, create healthy
+   meal plans, track progress, earn points and encourage
+   one another every day.
+  </p>
+  <button onclick="openJourney()">Start Your Journey →</button>
+  <a href="#teams" class="btn secondary">Explore Team Dashboard</a>
+  <p class="small">Brotherhood • Wellness • Progress</p>
+ </div>
 </div>
 
-<section id="featurePage" class="hidden">
-  <button class="secondary" onclick="showHome()">← Back to Home</button>
-  <h2 id="featureTitle" style="margin-top:25px"></h2>
-  <div id="featureContent"></div>
+<section id="features">
+ <h2>Everything you need to grow healthier</h2>
+ <p class="muted">
+  From the first healthy meal to your next fitness milestone,
+  Fitarya helps you build sustainable habits.
+ </p>
+
+ <div class="grid">
+  <div class="card feature">
+   <div class="emoji">🥗</div>
+   <h3>Diet & Nutrition</h3>
+   <p>Indian-inspired healthy meals, protein-rich options,
+   food preferences and balanced meal planning.</p>
+   <a href="#diet">Explore diet examples →</a>
+  </div>
+  <div class="card feature">
+   <div class="emoji">⚖️</div>
+   <h3>Weight Tracking</h3>
+   <p>Monitor trends, calculate BMI and set
+   realistic milestones without crash dieting.</p>
+   <a href="#weight">Explore progress →</a>
+  </div>
+  <div class="card feature">
+   <div class="emoji">🏃</div>
+   <h3>Fitness & Movement</h3>
+   <p>Walking, strength training, badminton
+   and movement challenges for all levels.</p>
+   <a href="#fitness">Explore workouts →</a>
+  </div>
+  <div class="card feature">
+   <div class="emoji">💧</div>
+   <h3>Hydration</h3>
+   <p>Build a consistent water-drinking routine
+   with a simple daily tracking example.</p>
+   <a href="#hydration">Try water tracker →</a>
+  </div>
+  <div class="card feature">
+   <div class="emoji">📊</div>
+   <h3>Daily Progress</h3>
+   <p>Record food, exercise, hydration,
+   weight and personal reflections.</p>
+   <a href="#daily">See daily example →</a>
+  </div>
+  <div class="card feature">
+   <div class="emoji">🏆</div>
+   <h3>Buddy Challenges</h3>
+   <p>Create teams, invite friends, share goals,
+   earn points and celebrate consistency.</p>
+   <a href="#teams">Explore team dashboard →</a>
+  </div>
+ </div>
 </section>
 
-<section id="demo" class="hidden">
-  <button class="secondary" onclick="showHome()">← Back to Home</button>
-  <h2 style="margin-top:25px">🏆 Anthem Wellness Crew</h2>
-  <p class="muted">Example team dashboard with fictional scores.</p>
-  <div class="stats">
-    <div class="stat"><strong>8</strong>Buddies</div>
-    <div class="stat"><strong>30</strong>Challenge Days</div>
-    <div class="stat"><strong>100</strong>Points / Day</div>
-    <div class="stat"><strong>3,000</strong>Maximum Points</div>
+<section id="journey">
+ <h2>🌿 Your 30-Day Wellness Journey</h2>
+ <p class="muted">
+  Start with intention, then build healthy habits
+  you can maintain beyond the challenge.
+ </p>
+ <div class="grid">
+  <div class="card">
+   <span class="tag">Days 1–3</span>
+   <h3>🥤 Juice-Focused Introduction</h3>
+   <p>
+    Optional Pressed Juicery drinks combined with
+    balanced meals, adequate protein and sufficient calories.
+   </p>
+   <p class="muted">
+    Juice-only cleanses are not medically necessary for
+    detoxification and may not provide adequate nutrition.
+   </p>
   </div>
-  <div class="card" style="margin-top:20px">
-    <h3>🥇 Weekly Leaderboard</h3>
-    <div id="demoLeaderboard"></div>
+  <div class="card">
+   <span class="tag">Days 4–30</span>
+   <h3>🥗 Sustainable Diet</h3>
+   <p>
+    Build meals around lean protein, vegetables,
+    fiber-rich carbohydrates and healthy fats.
+   </p>
+   <p>
+    Add appropriate exercise, hydration and sleep.
+   </p>
   </div>
-  <div class="card" style="margin-top:20px">
-    <h3>How do buddies earn points?</h3>
-    <div id="pointsExplanation"></div>
-    <button onclick="openLogin()">Create Your Own Team</button>
+  <div class="card">
+   <span class="tag">Every Day</span>
+   <h3>🏆 Buddy Motivation</h3>
+   <p>
+    Track your habits, earn consistency points,
+    encourage teammates and celebrate progress.
+   </p>
   </div>
+ </div>
 </section>
 
-<section id="dashboard" class="hidden">
-  <div class="row">
-    <div>
-      <h2>👋 Welcome, <span id="welcomeName">Buddy</span></h2>
-      <p class="muted">Your wellness journey starts here.</p>
-    </div>
-    <span class="pill" id="accountEmail"></span>
+<section id="diet">
+ <h2>🥗 Healthy Indian-Inspired Diet Examples</h2>
+ <p class="muted">
+  No mandatory idli-based meal plan. Choose foods that
+  match your preferences, nutrition needs and budget.
+ </p>
+ <div class="grid">
+  <div class="card">
+   <img class="photo"
+    src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=650"
+    alt="Fresh healthy food ingredients">
+   <h3>Breakfast</h3>
+   <p>Vegetable omelet with Greek yogurt,
+   or protein oats with berries.</p>
   </div>
-
-  <div class="stats">
-    <div class="stat"><strong id="teamCount">0</strong>My Teams</div>
-    <div class="stat"><strong id="myPoints">0</strong>My Points</div>
-    <div class="stat"><strong id="myCheckins">0</strong>Check-ins</div>
+  <div class="card">
+   <img class="photo"
+    src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=650"
+    alt="Healthy vegetable meal">
+   <h3>Lunch</h3>
+   <p>Grilled chicken, tofu or paneer,
+   quinoa or brown rice, dal and vegetables.</p>
   </div>
-
-  <div class="tabs">
-    <button onclick="switchTab('teams')" id="tabTeams">👥 My Teams</button>
-    <button onclick="switchTab('checkin')" id="tabCheckin">📝 Daily Check-in</button>
-    <button onclick="switchTab('ranking')" id="tabRanking">🏆 Leaderboard</button>
-    <button onclick="switchTab('plan')" id="tabPlan">🥗 Diet Plan</button>
+  <div class="card">
+   <img class="photo"
+    src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=650"
+    alt="Balanced nutritious food bowl">
+   <h3>Dinner</h3>
+   <p>Grilled fish, air-fryer chicken
+   or paneer tikka with vegetables and salad.</p>
   </div>
-
-  <div id="teamsTab">
-    <div class="grid">
-      <div class="card">
-        <h3>Create a Team</h3>
-        <label>Team Name</label>
-        <input id="newTeamName" placeholder="Anthem Wellness Crew">
-        <label>Challenge Duration (Days)</label>
-        <input id="teamDuration" type="number" value="30" min="1" max="365">
-        <button onclick="createTeam()">Create Team</button>
-      </div>
-      <div class="card">
-        <h3>Join a Team</h3>
-        <p class="muted">Ask your buddy for a private invite code.</p>
-        <label>Invite Code</label>
-        <input id="joinCode" placeholder="Enter invite code">
-        <button onclick="joinTeam()">Join Team</button>
-      </div>
-    </div>
-    <h3 style="margin-top:25px">Your Teams</h3>
-    <div id="teamList"></div>
+ </div>
+ <div class="card" style="margin-top:20px">
+  <h3>Customize your dietary preferences</h3>
+  <div class="two">
+   <div>
+    <label>Diet Type</label>
+    <select id="dietType">
+     <option>Indian Balanced</option>
+     <option>Vegetarian</option>
+     <option>Non-Vegetarian</option>
+     <option>High Protein</option>
+     <option>Plant-Based</option>
+    </select>
+   </div>
+   <div>
+    <label>Foods to Avoid / Allergies</label>
+    <input id="avoidFoods" placeholder="Example: peanuts, dairy">
+   </div>
   </div>
-
-  <div id="checkinTab" class="hidden">
-    <div class="card">
-      <h3>📝 Daily Team Check-in</h3>
-      <label>Select Team</label>
-      <select id="checkinTeam"></select>
-      <label>Date</label>
-      <input id="checkinDate" type="date">
-      <label>Weight (kg) — optional, private</label>
-      <input id="checkinWeight" type="number" step="0.1" min="1" max="500">
-      <label>Meals / Food Notes</label>
-      <textarea id="checkinMeals" placeholder="Grilled chicken, vegetables, yogurt..."></textarea>
-      <label>Water (glasses)</label>
-      <input id="checkinWater" type="number" min="0" max="30" value="0">
-
-      <h3>Earn Your Daily Points</h3>
-      <div id="taskChecks"></div>
-
-      <div class="stat">
-        <strong id="todayPoints">0 / 100</strong>
-        Today's Points
-      </div>
-      <br>
-      <button onclick="saveCheckin()">Save Daily Progress</button>
-      <p class="muted">
-        Saving again updates the same day's check-in.
-        It does not award duplicate points.
-      </p>
-    </div>
-  </div>
-
-  <div id="rankingTab" class="hidden">
-    <div class="card">
-      <h3>🏆 Team Leaderboard</h3>
-      <label>Select Team</label>
-      <select id="rankingTeam" onchange="loadLeaderboard()"></select>
-      <div id="liveLeaderboard"></div>
-    </div>
-  </div>
-
-  <div id="planTab" class="hidden">
-    <div class="card">
-      <h3>🥗 Shared Team Diet Plan</h3>
-      <label>Select Team</label>
-      <select id="planTeam" onchange="loadPlan()"></select>
-      <label>Plan</label>
-      <textarea id="planText" style="min-height:220px"></textarea>
-      <button id="savePlanBtn" onclick="savePlan()">Save Team Plan</button>
-      <p class="muted">Only the team creator can edit the shared plan.</p>
-    </div>
-  </div>
-
-  <p id="dashboardMessage"></p>
+  <button onclick="showDietTip()">Show Example</button>
+  <p id="dietTip" class="muted"></p>
+ </div>
 </section>
 
-<dialog id="authDialog">
-  <h2>Welcome to Fitarya 🌿</h2>
-  <p class="muted">Sign in or create your own account.</p>
-  <label>Your Name (for new accounts)</label>
-  <input id="authName" placeholder="Your name">
-  <label>Email</label>
-  <input id="authEmail" type="email" autocomplete="email">
-  <label>Password</label>
-  <input id="authPassword" type="password" autocomplete="current-password">
-  <div class="row">
-    <button onclick="signIn()">Sign In</button>
-    <button class="secondary" onclick="signUp()">Create Account</button>
-    <button class="secondary" onclick="closeLogin()">Cancel</button>
+<section id="weight">
+ <h2>⚖️ A Motivating Weight Journey</h2>
+ <p class="muted">
+  Example progress over 30 days. Actual weight changes
+  vary, and daily fluctuations are normal.
+ </p>
+ <div class="stats">
+  <div class="stat"><strong>96.0</strong><span>Day 1 · kg</span></div>
+  <div class="stat"><strong>95.3</strong><span>Day 8 · kg</span></div>
+  <div class="stat"><strong>94.6</strong><span>Day 15 · kg</span></div>
+  <div class="stat"><strong>93.9</strong><span>Day 22 · kg</span></div>
+  <div class="stat"><strong>93.2</strong><span>Day 30 · kg</span></div>
+ </div>
+ <div class="card">
+  <h3>BMI Calculator</h3>
+  <div class="two">
+   <div>
+    <label>Height (cm)</label>
+    <input id="height" type="number" value="182" min="80" max="250">
+   </div>
+   <div>
+    <label>Weight (kg)</label>
+    <input id="weightInput" type="number" value="96" min="20" max="500">
+   </div>
   </div>
-  <p id="authMessage" class="error"></p>
-</dialog>
+  <button onclick="calculateBMI()">Calculate BMI</button>
+  <p id="bmiResult"></p>
+  <p class="muted small">
+   BMI is a screening measure, not a diagnosis or an
+   individualized ideal-weight recommendation.
+  </p>
+ </div>
+</section>
+
+<section id="fitness">
+ <h2>🏃 Fitness & Movement</h2>
+ <div class="grid">
+  <div class="card"><h3>Monday</h3><p>Brisk walking</p></div>
+  <div class="card"><h3>Tuesday</h3><p>Beginner strength training</p></div>
+  <div class="card"><h3>Wednesday</h3><p>Walking and mobility</p></div>
+  <div class="card"><h3>Thursday</h3><p>Strength and flexibility</p></div>
+  <div class="card"><h3>Friday</h3><p>Badminton or preferred sport</p></div>
+  <div class="card"><h3>Weekend</h3><p>Active recovery and outdoor movement</p></div>
+ </div>
+ <p class="muted">Adjust intensity to your fitness level and medical needs.</p>
+</section>
+
+<section id="hydration">
+ <h2>💧 Hydration Tracker</h2>
+ <div class="card">
+  <h3>Today's Water — Demo</h3>
+  <div class="stat"><strong id="waterCount">0</strong>Glasses recorded</div>
+  <button onclick="changeWater(1)">+ Add Glass</button>
+  <button class="secondary" onclick="changeWater(-1)">− Remove</button>
+  <button class="secondary" onclick="resetWater()">Reset</button>
+  <p class="muted small">
+   This is a local demonstration. Water needs differ by
+   activity, climate and health conditions.
+  </p>
+ </div>
+</section>
+
+<section id="daily">
+ <h2>📊 Daily Progress & Automatic Points Preview</h2>
+ <p class="muted">
+  Check off your activities to see how points would be calculated.
+ </p>
+ <div class="card">
+  <div id="dailyTasks"></div>
+  <div class="stat">
+   <strong id="dailyScore">0 / 100</strong>
+   Today's example points
+  </div>
+  <p class="muted small">
+   This demonstration does not save data or award real team points.
+  </p>
+ </div>
+</section>
+
+<section id="teams">
+ <h2>🏆 Anthem Wellness Crew</h2>
+ <p class="muted">
+  Here's how your team dashboard could look when eight buddies
+  create accounts and join a challenge.
+  All results below are fictional examples.
+ </p>
+ <div class="stats">
+  <div class="stat"><strong>8</strong><span>Buddies</span></div>
+  <div class="stat"><strong>30</strong><span>Challenge Days</span></div>
+  <div class="stat"><strong>100</strong><span>Daily Points Available</span></div>
+  <div class="stat"><strong>3,000</strong><span>30-Day Maximum</span></div>
+ </div>
+ <div class="two">
+  <div class="card">
+   <h3>🥇 Example Leaderboard</h3>
+   <div id="leaderboard"></div>
+  </div>
+  <div class="card">
+   <h3>How Points Work</h3>
+   <div id="pointRules"></div>
+   <h3>Team Activities</h3>
+   <p>🥗 Shared meal plan</p>
+   <p>🏃 Movement challenges</p>
+   <p>💧 Hydration goals</p>
+   <p>🔥 Weekly streaks</p>
+   <p>👏 Buddy encouragement</p>
+  </div>
+ </div>
+ <div class="card" style="margin-top:20px">
+  <h3>👥 Create Your Team — Preview</h3>
+  <div class="two">
+   <div>
+    <label>Team Name</label>
+    <input id="teamName" placeholder="Anthem Wellness Crew">
+   </div>
+   <div>
+    <label>Challenge Duration</label>
+    <select id="duration">
+     <option>7 days</option>
+     <option>14 days</option>
+     <option selected>30 days</option>
+     <option>60 days</option>
+    </select>
+   </div>
+  </div>
+  <label>Invite Buddies by Email</label>
+  <textarea id="teamEmails" placeholder="srini@example.com, hari@example.com"></textarea>
+  <label>Team Goal</label>
+  <select id="teamGoal">
+   <option>Healthy Eating & Consistency</option>
+   <option>Fitness & Movement</option>
+   <option>Weight Management</option>
+   <option>Overall Wellness</option>
+  </select>
+  <button onclick="previewTeam()">Preview My Team</button>
+  <div id="teamPreview"></div>
+  <p class="muted small">
+   Team creation and invitation emails are demonstrations
+   until connected to a secure backend.
+  </p>
+ </div>
+</section>
+
+<section id="reports">
+ <h2>🩺 Health Reports & Insights</h2>
+ <p class="muted">
+  Understand your health information, track trends
+  and prepare better questions for healthcare professionals.
+ </p>
+ <div class="grid">
+  <div class="card">
+   <div class="emoji">📄</div>
+   <h3>Review Lab Results</h3>
+   <p>Learn what common markers such as glucose,
+   HbA1c and cholesterol measure.</p>
+  </div>
+  <div class="card">
+   <div class="emoji">📈</div>
+   <h3>Monitor Trends</h3>
+   <p>Compare measurements over time rather than
+   relying on one isolated number.</p>
+  </div>
+  <div class="card">
+   <div class="emoji">🔒</div>
+   <h3>Private by Design</h3>
+   <p>Medical reports should remain private and
+   should never be shared with teammates automatically.</p>
+  </div>
+ </div>
+ <div class="card" style="margin-top:20px">
+  <h3>Example: Understanding a Lab Value</h3>
+  <label>Choose a health marker</label>
+  <select id="marker">
+   <option value="a1c">HbA1c</option>
+   <option value="glucose">Blood Glucose</option>
+   <option value="ldl">LDL Cholesterol</option>
+   <option value="hdl">HDL Cholesterol</option>
+   <option value="trig">Triglycerides</option>
+  </select>
+  <button onclick="showMarker()">Learn About This Marker</button>
+  <p id="markerExplanation" class="muted"></p>
+ </div>
+ <div class="notice" style="margin-top:20px">
+  <strong>Health integrations:</strong>
+  Apple Health, Fitbit, Google Health Connect and PDF report
+  processing are not connected in this version.
+  Do not upload confidential medical reports to a public
+  team area.
+ </div>
+</section>
+
+<section id="privacy">
+ <h2>🔒 Privacy Policy</h2>
+ <p class="muted">Effective: November 2, 2026</p>
+ <div class="card">
+  <h3>1. Our Commitment</h3>
+  <p>
+   Fitarya is intended to help people organize wellness
+   activities and encourage one another. We recognize
+   that weight, dietary preferences, health information
+   and activity records can be sensitive.
+  </p>
+
+  <h3>2. Information We May Collect</h3>
+  <p>
+   When account-based features are enabled, information
+   may include your name, email, team membership,
+   goals, meal logs, activity logs, hydration, weight,
+   and information you choose to provide.
+  </p>
+
+  <h3>3. How Information Is Used</h3>
+  <p>
+   Information may be used to provide accounts,
+   team functionality, progress tracking, scores,
+   invitations and related wellness features.
+  </p>
+
+  <h3>4. Team Sharing</h3>
+  <p>
+   Team participation may involve sharing selected
+   check-in information, activity status, and scores
+   with fellow members. Detailed medical records
+   should not be shared by default.
+  </p>
+
+  <h3>5. Third-Party Services</h3>
+  <p>
+   Fitarya may use GitHub Pages for hosting and
+   Google Firebase for authentication and data storage.
+   These services have their own policies and terms.
+  </p>
+
+  <h3>6. Security</h3>
+  <p>
+   We aim to use reasonable safeguards, including
+   HTTPS, authentication and access controls.
+   However, no online system can guarantee absolute
+   security. Users should protect their passwords
+   and avoid sharing sensitive information unnecessarily.
+  </p>
+
+  <h3>7. Data Retention and Deletion</h3>
+  <p>
+   Users should be able to request deletion of their
+   account and associated personal data, subject to
+   applicable legal and operational requirements.
+   Account and data deletion controls must be implemented
+   before production registration is opened.
+  </p>
+
+  <h3>8. Health Information</h3>
+  <p>
+   Medical reports and health information require
+   additional privacy protections. Fitarya will not
+   intentionally publish medical reports to teams.
+  </p>
+
+  <h3>9. Changes</h3>
+  <p>
+   This policy may be updated as Fitarya's features
+   and services change. Material changes should
+   be communicated to affected users.
+  </p>
+ </div>
+</section>
+
+<section id="terms">
+ <h2>📜 Terms of Use & Health Disclaimer</h2>
+ <div class="card">
+  <h3>General Wellness Information</h3>
+  <p>
+   Fitarya provides educational wellness information,
+   planning tools and peer motivation. It is not a
+   medical provider, diagnostic service or substitute
+   for professional medical advice.
+  </p>
+
+  <h3>No Guaranteed Results</h3>
+  <p>
+   Weight loss, fitness improvements and other outcomes
+   vary from person to person. Example progress charts,
+   scores and transformation stories are illustrative,
+   not promises or actual user testimonials.
+  </p>
+
+  <h3>Use at Your Own Discretion</h3>
+  <p>
+   Users are responsible for choosing activities
+   appropriate to their circumstances and for consulting
+   qualified healthcare professionals before making
+   significant changes to diet, exercise, medication
+   or medical treatment.
+  </p>
+
+  <h3>Limitation of Liability</h3>
+  <p>
+   To the extent permitted by applicable law, Fitarya
+   and its operators disclaim liability for losses
+   arising from reliance on general wellness content,
+   self-reported user information, or interruptions
+   and limitations of the service.
+  </p>
+  <p>
+   Nothing in these terms excludes liability that
+   cannot lawfully be excluded, including responsibilities
+   imposed by applicable privacy, consumer protection
+   or data security laws.
+  </p>
+
+  <h3>User Conduct</h3>
+  <p>
+   Members must not misuse the service, access
+   another member's account without permission,
+   publish confidential information without authorization,
+   or harass other team members.
+  </p>
+
+  <h3>Third-Party Integrations</h3>
+  <p>
+   Third-party health apps, wearables and external
+   websites may be subject to separate terms,
+   permissions and availability.
+  </p>
+ </div>
+</section>
+
+<section id="contact">
+ <h2>✉️ Privacy & Support</h2>
+ <div class="card">
+  <p>
+   For privacy questions, data access requests,
+   correction requests, or account deletion,
+   contact the Fitarya administrator through the
+   official contact method published by the operator.
+  </p>
+  <p class="notice">
+   Before launching publicly, add a real support email,
+   establish a data deletion process, and have the
+   privacy policy and terms reviewed for your jurisdiction.
+  </p>
+ </div>
+</section>
 
 <footer>
-  <h3>🌿 Fitarya</h3>
-  <p>Inspired by Anthem Bros Group</p>
-  <p>Grow healthier. Together.</p>
+ <h2>💚 Fitarya</h2>
+ <p>Inspired by Anthem Bros Group</p>
+ <p>Brotherhood • Wellness • Progress</p>
+ <p>
+  <a href="#privacy">Privacy Policy</a>
+  <a href="#terms">Terms & Disclaimer</a>
+  <a href="#contact">Support</a>
+ </p>
+ <p class="small">
+  © 2026 Fitarya. Educational wellness platform.
+  Not medical advice.
+ </p>
 </footer>
 
-<script type="module">
-import {initializeApp} from
-"https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
+<dialog id="journeyDialog">
+ <h2>🚀 Start Your Journey</h2>
+ <p class="muted">
+  Build a team, choose your goals and start your
+  wellness challenge.
+ </p>
 
-import {
-  getAuth,onAuthStateChanged,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  signOut,updateProfile
-} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+ <label>Your Name</label>
+ <input id="yourName" placeholder="Your name">
 
-import {
-  getFirestore,collection,doc,getDoc,getDocs,
-  setDoc,addDoc,query,where,serverTimestamp
-} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
+ <label>What would you like to do?</label>
+ <select id="journeyAction">
+  <option>Create a New Team</option>
+  <option>Join a Friend's Team</option>
+  <option>Explore Personal Wellness</option>
+ </select>
 
-const firebaseConfig={
-  apiKey:"AIzaSyCzoHhKe-uC_LHXkJ4Oopzg3vRT2xk9IzI",
-  authDomain:"mahesh-srini-diet-buddy.firebaseapp.com",
-  projectId:"mahesh-srini-diet-buddy",
-  storageBucket:"mahesh-srini-diet-buddy.firebasestorage.app",
-  messagingSenderId:"661485924930",
-  appId:"1:661485924930:web:9bb0093a92dd8930bfb3db"
-};
+ <label>Primary Goal</label>
+ <select id="personalGoal">
+  <option>Build Healthy Habits</option>
+  <option>Improve Fitness</option>
+  <option>Manage Weight</option>
+  <option>Improve Nutrition</option>
+ </select>
 
-const app=initializeApp(firebaseConfig);
-const auth=getAuth(app);
-const db=getFirestore(app);
+ <label class="check">
+  <input type="checkbox" id="consent">
+  I have read the Privacy Policy and Terms of Use,
+  and understand that Fitarya is not medical advice.
+ </label>
 
-let currentUser=null;
-let myTeams=[];
+ <div class="row">
+  <button onclick="continueJourney()">Continue</button>
+  <button class="secondary" onclick="closeJourney()">Cancel</button>
+ </div>
+ <p id="journeyMessage" class="muted"></p>
+ <p class="small muted">
+  This is a demonstration onboarding flow.
+  It does not create an account or save information.
+ </p>
+</dialog>
+
+<script>
+const members=[
+ ["Mahesh",690],["Srini",665],["Hari",620],
+ ["Siva",590],["Anil",550],["Mahesh2",505],
+ ["Prashanth",465],["Suresh",420]
+];
+
+const tasks=[
+ ["Daily check-in",20],
+ ["Followed diet plan",30],
+ ["Completed activity goal",25],
+ ["Met hydration goal",15],
+ ["Encouraged a buddy",10]
+];
 
 const $=id=>document.getElementById(id);
 
-const tasks=[
-  {id:"checkedIn",label:"Daily check-in",points:20},
-  {id:"diet",label:"Followed team diet plan",points:30},
-  {id:"workout",label:"Completed activity goal",points:25},
-  {id:"hydration",label:"Met hydration goal",points:15},
-  {id:"encouraged",label:"Encouraged a buddy",points:10}
-];
-
-const sampleMembers=[
-  ["Mahesh",690],["Srini",665],["Hari",620],
-  ["Siva",590],["Anil",550],["Mahesh2",505],
-  ["Prashanth",465],["Suresh",420]
-];
-
-const defaultPlan=`FITARYA 30-DAY WELLNESS PLAN
-
-DAYS 1–3: JUICE-FOCUSED INTRODUCTION
-• Optional Pressed Juicery drinks
-• Include balanced meals and protein
-• Drink water regularly
-• Avoid juice-only restriction
-
-DAYS 4–30: BALANCED EATING
-
-Breakfast:
-Vegetable omelet, Greek yogurt or protein oats
-
-Lunch:
-Grilled chicken/tofu, quinoa or brown rice,
-vegetables and dal
-
-Snack:
-Fruit, roasted chana or nuts
-
-Dinner:
-Fish, paneer tikka or air-fryer chicken
-with vegetables and salad
-
-DAILY GOALS:
-• Follow your individualized food plan
-• Complete appropriate movement
-• Meet your hydration goal
-• Log progress consistently
-
-Adjust portions and exercise to personal needs.
-No crash dieting or guaranteed weight-loss target.`;
-
-const featureData=[
-  {
-    icon:"🥗",title:"Diet & Nutrition",
-    content:`
-      <h3>A sample healthy Indian-style day</h3>
-      <div class="grid">
-        <div class="card"><h3>Breakfast</h3><p>Vegetable omelet, Greek yogurt and berries</p></div>
-        <div class="card"><h3>Lunch</h3><p>Grilled tandoori chicken or tofu, quinoa, dal and vegetables</p></div>
-        <div class="card"><h3>Snack</h3><p>Apple with roasted chana or a small portion of nuts</p></div>
-        <div class="card"><h3>Dinner</h3><p>Air-fryer chicken, grilled fish or paneer tikka with salad</p></div>
-      </div>
-      <h3>30-day approach</h3>
-      <p>Days 1–3: Optional juice-focused introduction with balanced meals.</p>
-      <p>Days 4–30: Sustainable meals, movement and tracking.</p>
-      <p class="muted">Individual calorie and protein needs vary.</p>`
-  },
-  {
-    icon:"⚖️",title:"Weight Tracking",
-    content:`
-      <h3>Example 30-day journey</h3>
-      <p>Day 1: 96.0 kg</p>
-      <p>Day 8: 95.3 kg</p>
-      <p>Day 15: 94.6 kg</p>
-      <p>Day 22: 93.9 kg</p>
-      <p>Day 30: 93.2 kg</p>
-      <p class="muted">Illustrative only. Real weight naturally fluctuates.</p>
-      <div class="card">
-        <h3>BMI Calculator</h3>
-        <label>Height (cm)</label>
-        <input id="bmiHeight" type="number" value="182">
-        <label>Weight (kg)</label>
-        <input id="bmiWeight" type="number" value="96">
-        <button onclick="calculateBMI()">Calculate BMI</button>
-        <p id="bmiResult"></p>
-      </div>`
-  },
-  {
-    icon:"🏃",title:"Fitness & Movement",
-    content:`
-      <div class="grid">
-        <div class="card"><h3>Monday</h3><p>30-minute brisk walk</p></div>
-        <div class="card"><h3>Tuesday</h3><p>Beginner strength training</p></div>
-        <div class="card"><h3>Wednesday</h3><p>Walking and mobility</p></div>
-        <div class="card"><h3>Thursday</h3><p>Strength or resistance exercise</p></div>
-        <div class="card"><h3>Friday</h3><p>Badminton or another enjoyable activity</p></div>
-        <div class="card"><h3>Weekend</h3><p>Active recovery and outdoor movement</p></div>
-      </div>`
-  },
-  {
-    icon:"💧",title:"Hydration",
-    content:`
-      <div class="card">
-        <h3>Water Tracker Demo</h3>
-        <p id="waterDemo">0 glasses</p>
-        <button onclick="addWater()">+ Add Glass</button>
-        <button class="secondary" onclick="resetWater()">Reset</button>
-        <p class="muted">Hydration needs vary by person and activity.</p>
-      </div>`
-  },
-  {
-    icon:"📊",title:"Daily Progress",
-    content:`
-      <h3>Example daily check-in</h3>
-      <div class="card">
-        <p>🥗 Followed meal plan: Yes</p>
-        <p>🏃 Movement goal: Completed</p>
-        <p>💧 Hydration goal: Met</p>
-        <p>📝 Check-in: Completed</p>
-        <h3>Today's Score: 90 / 100</h3>
-        <p>Celebrate consistent habits rather than rapid weight loss.</p>
-      </div>`
-  },
-  {
-    icon:"🤝",title:"Buddy Challenges",
-    content:`
-      <h3>Build your own wellness team</h3>
-      <p>1. Create an account</p>
-      <p>2. Create a team and get an invite code</p>
-      <p>3. Invite your friends to join themselves</p>
-      <p>4. Share a 30-day diet plan</p>
-      <p>5. Track daily habits and earn points</p>
-      <p>6. Celebrate progress together</p>
-      <button onclick="showDemo()">See Example Team Leaderboard</button>`
-  }
-];
-
-function escapeHTML(value){
-  return String(value??"").replace(/[&<>"']/g,c=>({
-    "&":"&amp;","<":"&lt;",">":"&gt;",
-    '"':"&quot;","'":"&#39;"
-  }[c]));
+function escapeHTML(s){
+ return String(s).replace(/[&<>"']/g,c=>({
+  "&":"&amp;","<":"&lt;",">":"&gt;",
+  '"':"&quot;","'":"&#39;"
+ })[c]);
 }
 
-function showSection(id){
-  ["home","featurePage","demo","dashboard"].forEach(x=>
-    $(x).classList.toggle("hidden",x!==id));
-  window.scrollTo(0,0);
+$("leaderboard").innerHTML=members.map((m,i)=>`
+ <div class="member">
+  <div class="row">
+   <strong>${["🥇","🥈","🥉"][i]||"#"+(i+1)}
+    ${escapeHTML(m[0])}</strong>
+   <strong>${m[1]} pts</strong>
+  </div>
+  <div class="bar">
+   <div class="fill" style="width:${m[1]/700*100}%"></div>
+  </div>
+ </div>
+`).join("");
+
+$("pointRules").innerHTML=tasks.map(t=>`
+ <div class="member row">
+  <span>${t[0]}</span><strong>+${t[1]}</strong>
+ </div>
+`).join("");
+
+$("dailyTasks").innerHTML=tasks.map((t,i)=>`
+ <label class="check">
+  <input type="checkbox" id="task${i}" onchange="updateScore()">
+  ${t[0]} — ${t[1]} points
+ </label>
+`).join("");
+
+function updateScore(){
+ let score=0;
+ tasks.forEach((t,i)=>{
+  if($("task"+i).checked)score+=t[1];
+ });
+ $("dailyScore").textContent=score+" / 100";
 }
 
-window.showHome=()=>showSection("home");
-window.showDemo=()=>showSection("demo");
-
-window.openFeature=i=>{
-  const f=featureData[i];
-  $("featureTitle").textContent=f.icon+" "+f.title;
-  $("featureContent").innerHTML=f.content;
-  showSection("featurePage");
-};
-
-$("features").innerHTML=featureData.map((f,i)=>`
-  <div class="card feature" onclick="openFeature(${i})">
-    <h3>${f.icon} ${f.title}</h3>
-    <p>Explore examples, practical tips and progress ideas.</p>
-    <strong style="color:#176b4d">Explore examples →</strong>
-  </div>`).join("");
-
-$("demoLeaderboard").innerHTML=sampleMembers.map(([name,points],i)=>`
-  <div class="member">
-    <div style="flex:1">
-      <strong>${["🥇","🥈","🥉"][i]||"#"+(i+1)} ${name}</strong>
-      <div class="bar">
-        <div class="fill" style="width:${points/700*100}%"></div>
-      </div>
-    </div>
-    <strong>${points} pts</strong>
-  </div>`).join("");
-
-$("pointsExplanation").innerHTML=tasks.map(t=>`
-  <div class="member">
-    <span>${t.label}</span>
-    <strong>+${t.points}</strong>
-  </div>`).join("");
-
-$("taskChecks").innerHTML=tasks.map(t=>`
-  <label class="check">
-    <input type="checkbox" id="task_${t.id}" onchange="updatePoints()">
-    ${t.label} (+${t.points})
-  </label>`).join("");
-
-let waterDemoCount=0;
-window.addWater=()=>{
-  waterDemoCount++;
-  $("waterDemo").textContent=waterDemoCount+" glasses";
-};
-window.resetWater=()=>{
-  waterDemoCount=0;
-  $("waterDemo").textContent="0 glasses";
-};
-
-window.calculateBMI=()=>{
-  const h=Number($("bmiHeight").value)/100;
-  const w=Number($("bmiWeight").value);
-  if(h<=0||w<=0){
-    $("bmiResult").textContent="Enter valid height and weight.";
-    return;
-  }
-  const bmi=w/(h*h);
-  const category=bmi<18.5?"Underweight":
-    bmi<25?"Healthy BMI range":
-    bmi<30?"Overweight":"Obesity range";
-  $("bmiResult").textContent=
-    `BMI: ${bmi.toFixed(1)} (${category}). `+
-    `Standard adult BMI-range weight: `+
-    `${(18.5*h*h).toFixed(1)}–${(24.9*h*h).toFixed(1)} kg. `+
-    `BMI is only a screening tool.`;
-};
-
-window.openLogin=()=>{$("authDialog").showModal()};
-window.closeLogin=()=>{$("authDialog").close()};
-
-window.signUp=async()=>{
-  try{
-    const email=$("authEmail").value.trim();
-    const password=$("authPassword").value;
-    const name=$("authName").value.trim();
-    if(!name)throw Error("Please enter your name.");
-    const result=await createUserWithEmailAndPassword(auth,email,password);
-    await updateProfile(result.user,{displayName:name});
-    await setDoc(doc(db,"users",result.user.uid),{
-      name,email,createdAt:serverTimestamp()
-    });
-    closeLogin();
-    showDashboard();
-  }catch(e){$("authMessage").textContent=e.message}
-};
-
-window.signIn=async()=>{
-  try{
-    await signInWithEmailAndPassword(
-      auth,$("authEmail").value.trim(),
-      $("authPassword").value
-    );
-    closeLogin();
-    showDashboard();
-  }catch(e){$("authMessage").textContent=e.message}
-};
-
-window.logout=async()=>{
-  await signOut(auth);
-  myTeams=[];
-  showHome();
-};
-
-onAuthStateChanged(auth,async user=>{
-  currentUser=user;
-  $("loginBtn").classList.toggle("hidden",!!user);
-  $("dashboardBtn").classList.toggle("hidden",!user);
-  $("logoutBtn").classList.toggle("hidden",!user);
-  if(user){
-    $("welcomeName").textContent=user.displayName||"Buddy";
-    $("accountEmail").textContent=user.email;
-    try{await refreshTeams()}catch(e){showMessage(e.message,true)}
-  }else if(!$("dashboard").classList.contains("hidden")){
-    showHome();
-  }
-});
-
-window.showDashboard=async()=>{
-  if(!currentUser){openLogin();return}
-  showSection("dashboard");
-  switchTab("teams");
-  await refreshTeams();
-};
-
-window.switchTab=tab=>{
-  ["teams","checkin","ranking","plan"].forEach(x=>{
-    $(x+"Tab").classList.toggle("hidden",x!==tab);
-    $("tab"+x[0].toUpperCase()+x.slice(1))
-      .classList.toggle("active",x===tab);
-  });
-  if(tab==="ranking")loadLeaderboard();
-  if(tab==="plan")loadPlan();
-  if(tab==="checkin")loadCheckin();
-};
-
-function showMessage(message,isError=false){
-  $("dashboardMessage").textContent=message;
-  $("dashboardMessage").className=isError?"error":"success";
+let water=0;
+function changeWater(n){
+ water=Math.max(0,water+n);
+ $("waterCount").textContent=water;
+}
+function resetWater(){
+ water=0;
+ $("waterCount").textContent=water;
 }
 
-function randomCode(){
-  const bytes=new Uint8Array(12);
-  crypto.getRandomValues(bytes);
-  return Array.from(bytes,b=>b.toString(16).padStart(2,"0")).join("");
+function calculateBMI(){
+ const h=Number($("height").value)/100;
+ const w=Number($("weightInput").value);
+ if(!Number.isFinite(h)||!Number.isFinite(w)||
+    h<=0||w<=0){
+  $("bmiResult").textContent="Enter valid height and weight.";
+  return;
+ }
+ const bmi=w/(h*h);
+ const category=bmi<18.5?"Below standard range":
+  bmi<25?"Within standard range":
+  bmi<30?"Overweight range":"Obesity range";
+ $("bmiResult").textContent=
+  "BMI: "+bmi.toFixed(1)+" ("+category+"). "+
+  "Standard adult BMI weight range: "+
+  (18.5*h*h).toFixed(1)+"–"+
+  (24.9*h*h).toFixed(1)+" kg. "+
+  "Your personal healthy weight may differ.";
 }
 
-window.createTeam=async()=>{
-  if(!currentUser)return;
-  const name=$("newTeamName").value.trim();
-  const duration=Number($("teamDuration").value);
-  if(!name||duration<1||duration>365){
-    showMessage("Enter a team name and valid duration.",true);
-    return;
-  }
-  try{
-    const teamRef=doc(collection(db,"teams"));
-    const inviteCode=randomCode();
-    await setDoc(teamRef,{
-      name,owner:currentUser.uid,
-      duration,inviteCode,
-      createdAt:serverTimestamp(),
-      plan:defaultPlan
-    });
-    await setDoc(doc(db,"teams",teamRef.id,"members",currentUser.uid),{
-      uid:currentUser.uid,
-      name:currentUser.displayName||currentUser.email,
-      joinedAt:serverTimestamp()
-    });
-    $("newTeamName").value="";
-    await refreshTeams();
-    showMessage("Team created! Share the invite code privately.");
-  }catch(e){showMessage(e.message,true)}
-};
-
-window.joinTeam=async()=>{
-  if(!currentUser)return;
-  const code=$("joinCode").value.trim().toLowerCase();
-  if(!code)return showMessage("Enter an invite code.",true);
-  try{
-    const result=await getDocs(
-      query(collection(db,"teams"),where("inviteCode","==",code))
-    );
-    if(result.empty)throw Error("Invite code not found.");
-    const team=result.docs[0];
-    await setDoc(doc(db,"teams",team.id,"members",currentUser.uid),{
-      uid:currentUser.uid,
-      name:currentUser.displayName||currentUser.email,
-      joinedAt:serverTimestamp()
-    });
-    $("joinCode").value="";
-    await refreshTeams();
-    showMessage("Successfully joined "+team.data().name+"!");
-  }catch(e){showMessage(e.message,true)}
-};
-
-async function refreshTeams(){
-  if(!currentUser)return;
-  const snap=await getDocs(collection(db,"teams"));
-  const teams=[];
-  for(const d of snap.docs){
-    const member=await getDoc(
-      doc(db,"teams",d.id,"members",currentUser.uid)
-    );
-    if(member.exists())teams.push({id:d.id,...d.data()});
-  }
-  myTeams=teams;
-  $("teamCount").textContent=teams.length;
-
-  $("teamList").innerHTML=teams.length?
-    teams.map(t=>`
-      <div class="card" style="margin-bottom:12px">
-        <h3>${escapeHTML(t.name)}</h3>
-        <p>${t.duration} day challenge</p>
-        <p>Invite Code:
-          <strong>${escapeHTML(t.inviteCode)}</strong>
-        </p>
-        <span class="pill">
-          ${t.owner===currentUser.uid?"Team Creator":"Member"}
-        </span>
-      </div>`).join(""):
-    '<p class="muted">No teams yet. Create or join one above.</p>';
-
-  const options=teams.map(t=>
-    `<option value="${t.id}">${escapeHTML(t.name)}</option>`
-  ).join("");
-
-  ["checkinTeam","rankingTeam","planTeam"].forEach(id=>{
-    const old=$(id).value;
-    $(id).innerHTML=options;
-    if(teams.some(t=>t.id===old))$(id).value=old;
-  });
-
-  await updateMyStats();
+function showDietTip(){
+ const diet=$("dietType").value;
+ const avoid=$("avoidFoods").value.trim();
+ const tips={
+  "Indian Balanced":"Grilled chicken or paneer, dal, vegetables and brown rice.",
+  "Vegetarian":"Tofu, lentils, Greek yogurt, vegetables and quinoa.",
+  "Non-Vegetarian":"Grilled fish or chicken, vegetables and whole grains.",
+  "High Protein":"Eggs, Greek yogurt, chicken, tofu, beans and lentils.",
+  "Plant-Based":"Tofu, chickpeas, lentils, nuts and vegetables."
+ };
+ $("dietTip").textContent=
+  "Example: "+tips[diet]+
+  (avoid?" Avoid or substitute: "+avoid+".":"")+
+  " Check ingredients and allergens carefully.";
 }
 
-function calculatePoints(data){
-  return tasks.reduce((sum,t)=>
-    sum+(data[t.id]?t.points:0),0);
-}
-
-window.updatePoints=()=>{
-  const data={};
-  tasks.forEach(t=>{
-    data[t.id]=$("task_"+t.id).checked;
-  });
-  $("todayPoints").textContent=calculatePoints(data)+" / 100";
+const markerInfo={
+ a1c:"HbA1c estimates average blood glucose over roughly 2–3 months. Interpretation depends on clinical context and laboratory guidance.",
+ glucose:"Blood glucose measures sugar in the blood. Interpretation depends on whether the sample was fasting and other factors.",
+ ldl:"LDL cholesterol is one factor in cardiovascular risk. Appropriate targets depend on individual risk and medical history.",
+ hdl:"HDL cholesterol is one component of a lipid profile. It should be considered alongside other cardiovascular risk factors.",
+ trig:"Triglycerides are fats circulating in the blood. Results can be influenced by meals, alcohol, health conditions and medications."
 };
 
-function todayLocal(){
-  const d=new Date();
-  return [
-    d.getFullYear(),
-    String(d.getMonth()+1).padStart(2,"0"),
-    String(d.getDate()).padStart(2,"0")
-  ].join("-");
+function showMarker(){
+ $("markerExplanation").textContent=
+  markerInfo[$("marker").value]+
+  " Discuss abnormal or concerning results with a qualified clinician.";
 }
 
-$("checkinDate").value=todayLocal();
+function previewTeam(){
+ const name=$("teamName").value.trim()||"My Wellness Team";
+ const emails=$("teamEmails").value
+  .split(/[\s,;]+/).map(x=>x.trim()).filter(Boolean);
+ const unique=[...new Set(emails)];
+ const valid=unique.filter(x=>
+  /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(x)
+ );
+ const box=$("teamPreview");
+ box.replaceChildren();
 
-async function loadCheckin(){
-  if(!currentUser)return;
-  const teamId=$("checkinTeam").value;
-  const date=$("checkinDate").value;
-  if(!teamId||!date)return;
-  try{
-    const snap=await getDoc(
-      doc(db,"teams",teamId,"checkins",
-        currentUser.uid+"_"+date)
-    );
-    const data=snap.exists()?snap.data():{};
-    $("checkinWeight").value=data.weight??"";
-    $("checkinMeals").value=data.meals??"";
-    $("checkinWater").value=data.water??0;
-    tasks.forEach(t=>{
-      $("task_"+t.id).checked=!!data[t.id];
-    });
-    updatePoints();
-  }catch(e){showMessage(e.message,true)}
+ const heading=document.createElement("h3");
+ heading.textContent="Preview: "+name;
+ box.append(heading);
+
+ const summary=document.createElement("p");
+ summary.textContent=
+  $("duration").value+" • "+$("teamGoal").value+
+  " • "+valid.length+" valid invitation address(es)";
+ box.append(summary);
+
+ valid.forEach(email=>{
+  const p=document.createElement("p");
+  p.textContent="✉️ "+email+" — invitation not sent";
+  box.append(p);
+ });
 }
 
-$("checkinDate").addEventListener("change",loadCheckin);
-$("checkinTeam").addEventListener("change",loadCheckin);
-
-window.saveCheckin=async()=>{
-  if(!currentUser)return;
-  const teamId=$("checkinTeam").value;
-  const date=$("checkinDate").value;
-  if(!teamId||!date)return showMessage("Select a team and date.",true);
-
-  const data={
-    uid:currentUser.uid,
-    name:currentUser.displayName||currentUser.email,
-    date,
-    weight:$("checkinWeight").value?
-      Number($("checkinWeight").value):null,
-    meals:$("checkinMeals").value.trim(),
-    water:Number($("checkinWater").value)||0
-  };
-  tasks.forEach(t=>{
-    data[t.id]=$("task_"+t.id).checked;
-  });
-  data.checkedIn=true;
-  data.points=calculatePoints(data);
-  data.updatedAt=serverTimestamp();
-
-  try{
-    await setDoc(
-      doc(db,"teams",teamId,"checkins",
-        currentUser.uid+"_"+date),
-      data
-    );
-    $("task_checkedIn").checked=true;
-    updatePoints();
-    showMessage("Progress saved! You earned "+data.points+" points.");
-    await updateMyStats();
-  }catch(e){showMessage(e.message,true)}
-};
-
-async function getTeamCheckins(teamId){
-  const snap=await getDocs(
-    collection(db,"teams",teamId,"checkins")
-  );
-  return snap.docs.map(d=>d.data());
+function openJourney(){
+ $("journeyDialog").showModal();
 }
-
-async function updateMyStats(){
-  let points=0,count=0;
-  for(const team of myTeams){
-    const entries=await getTeamCheckins(team.id);
-    entries.filter(x=>x.uid===currentUser.uid).forEach(x=>{
-      points+=calculatePoints(x);
-      count++;
-    });
-  }
-  $("myPoints").textContent=points;
-  $("myCheckins").textContent=count;
+function closeJourney(){
+ $("journeyDialog").close();
 }
-
-window.loadLeaderboard=async()=>{
-  const teamId=$("rankingTeam").value;
-  if(!teamId)return;
-  $("liveLeaderboard").textContent="Loading leaderboard...";
-  try{
-    const memberSnap=await getDocs(
-      collection(db,"teams",teamId,"members")
-    );
-    const entries=await getTeamCheckins(teamId);
-    const scores={};
-
-    memberSnap.docs.forEach(d=>{
-      scores[d.id]={
-        name:d.data().name||"Buddy",
-        points:0,days:0
-      };
-    });
-
-    entries.forEach(entry=>{
-      if(!scores[entry.uid])return;
-      scores[entry.uid].points+=calculatePoints(entry);
-      scores[entry.uid].days++;
-    });
-
-    const ranking=Object.values(scores)
-      .sort((a,b)=>b.points-a.points);
-
-    $("liveLeaderboard").innerHTML=ranking.map((m,i)=>`
-      <div class="member">
-        <div>
-          <strong>${["🥇","🥈","🥉"][i]||"#"+(i+1)}
-          ${escapeHTML(m.name)}</strong>
-          <p class="muted" style="margin:4px 0">
-            ${m.days} daily check-ins
-          </p>
-        </div>
-        <strong>${m.points} pts</strong>
-      </div>`).join("")||"<p>No members yet.</p>";
-  }catch(e){
-    $("liveLeaderboard").textContent=e.message;
-  }
-};
-
-window.loadPlan=async()=>{
-  const teamId=$("planTeam").value;
-  const team=myTeams.find(t=>t.id===teamId);
-  if(!team)return;
-  try{
-    const snap=await getDoc(doc(db,"teams",teamId));
-    $("planText").value=snap.data()?.plan||defaultPlan;
-    const isOwner=team.owner===currentUser.uid;
-    $("planText").readOnly=!isOwner;
-    $("savePlanBtn").disabled=!isOwner;
-  }catch(e){showMessage(e.message,true)}
-};
-
-window.savePlan=async()=>{
-  const teamId=$("planTeam").value;
-  const team=myTeams.find(t=>t.id===teamId);
-  if(!team||team.owner!==currentUser.uid)return;
-  try{
-    const ref=doc(db,"teams",teamId);
-    await setDoc(ref,{plan:$("planText").value},{merge:true});
-    showMessage("Team diet plan saved.");
-  }catch(e){showMessage(e.message,true)}
-};
+function continueJourney(){
+ if(!$("consent").checked){
+  $("journeyMessage").textContent=
+   "Please review and acknowledge the Privacy Policy and Terms.";
+  return;
+ }
+ const name=$("yourName").value.trim();
+ if(!name){
+  $("journeyMessage").textContent="Please enter your name.";
+  return;
+ }
+ $("journeyMessage").textContent=
+  "Welcome, "+name+"! This preview does not yet create "+
+  "an account. Secure Firebase onboarding is required "+
+  "to activate team creation and invitations.";
+}
 </script>
 </body>
 </html>
